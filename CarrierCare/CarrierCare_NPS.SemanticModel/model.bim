@@ -4123,14 +4123,6 @@
         "toTable": "LocalDateTable_41d2e0e5-9585-4858-915c-164254b125a7"
       },
       {
-        "name": "db47e2cf-aedf-4ce1-bde5-b2b15a85a371",
-        "fromColumn": "Date",
-        "fromTable": "Calendario",
-        "joinOnDateBehavior": "datePartOnly",
-        "toColumn": "Date",
-        "toTable": "LocalDateTable_f70aa27b-5a03-432c-a48a-7e9b1c762409"
-      },
-      {
         "name": "329662f2-ee5a-4e29-aa3c-933e7957d79a",
         "fromColumn": "FECHA DE RECEPCIÓN",
         "fromTable": "Incidencias",
@@ -4170,13 +4162,6 @@
         "joinOnDateBehavior": "datePartOnly",
         "toColumn": "Date",
         "toTable": "LocalDateTable_57bd1f4e-d41f-4c3e-bf40-4b347aeaa27e"
-      },
-      {
-        "name": "597c686b-f382-4b30-9e00-d1dda8a0400d",
-        "fromColumn": "value1",
-        "fromTable": "my bins",
-        "toColumn": "BandSizeOpEx",
-        "toTable": "BandSizeOpEx"
       },
       {
         "name": "16d28c27-463c-4df5-a1ae-b1133944784f",
@@ -4460,10 +4445,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -6200,264 +6181,6 @@
         "showAsVariationsOnly": true
       },
       {
-        "name": "Calendario",
-        "annotations": [
-          {
-            "name": "PBI_Id",
-            "value": "505d46366ce8443d89d14768cd7b1e1c"
-          }
-        ],
-        "columns": [
-          {
-            "name": "Date",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "dateTime",
-            "formatString": "General Date",
-            "isDataTypeInferred": true,
-            "isNameInferred": true,
-            "lineageTag": "6b03ae70-7340-4978-9b5c-3ac5688d1136",
-            "sourceColumn": "[Date]",
-            "summarizeBy": "none",
-            "type": "calculatedTableColumn",
-            "variations": [
-              {
-                "name": "Variación",
-                "defaultHierarchy": {
-                  "hierarchy": "Jerarquía de fechas",
-                  "table": "LocalDateTable_f70aa27b-5a03-432c-a48a-7e9b1c762409"
-                },
-                "isDefault": true,
-                "relationship": "db47e2cf-aedf-4ce1-bde5-b2b15a85a371"
-              }
-            ]
-          }
-        ],
-        "lineageTag": "a29bc21f-3eee-4f28-9f83-a8ebc52568ca",
-        "partitions": [
-          {
-            "name": "Calendario-fb4f2a20-7601-476b-af66-a5460fed15ba",
-            "mode": "import",
-            "source": {
-              "expression": "CALENDAR(MIN(Fechas[Min]),MAX(Fechas[Min]))",
-              "type": "calculated"
-            }
-          }
-        ]
-      },
-      {
-        "name": "LocalDateTable_f70aa27b-5a03-432c-a48a-7e9b1c762409",
-        "annotations": [
-          {
-            "name": "__PBI_LocalDateTable",
-            "value": "true"
-          }
-        ],
-        "columns": [
-          {
-            "name": "Date",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              }
-            ],
-            "dataCategory": "PaddedDateTableDates",
-            "dataType": "dateTime",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "isNameInferred": true,
-            "lineageTag": "7cb865f2-a032-4dea-987e-447ff0e5a750",
-            "sourceColumn": "[Date]",
-            "summarizeBy": "none",
-            "type": "calculatedTableColumn"
-          },
-          {
-            "name": "Año",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Year"
-              }
-            ],
-            "dataCategory": "Years",
-            "dataType": "int64",
-            "expression": "YEAR([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "04f6336c-af9f-42c9-b9ca-9e881bb7d26e",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "NroMes",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "MonthNumber"
-              }
-            ],
-            "dataCategory": "MonthOfYear",
-            "dataType": "int64",
-            "expression": "MONTH([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "b4d11bd6-bd6a-4ec6-9ae7-8f7e37da94eb",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Mes",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Month"
-              }
-            ],
-            "dataCategory": "Months",
-            "dataType": "string",
-            "expression": "FORMAT([Date], \"MMMM\")",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "7294a633-a71b-498e-9c32-1e69bdd6962b",
-            "sortByColumn": "NroMes",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "NroTrimestre",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "QuarterNumber"
-              }
-            ],
-            "dataCategory": "QuarterOfYear",
-            "dataType": "int64",
-            "expression": "INT(([NroMes] + 2) / 3)",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "25fc2151-41a2-4cde-b1c9-bbe49c8ce10a",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Trimestre",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Quarter"
-              }
-            ],
-            "dataCategory": "Quarters",
-            "dataType": "string",
-            "expression": "\"Trim. \" & [NroTrimestre]",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "62503e9c-ad4d-4e24-963d-93767d4b7524",
-            "sortByColumn": "NroTrimestre",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Día",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Day"
-              }
-            ],
-            "dataCategory": "DayOfMonth",
-            "dataType": "int64",
-            "expression": "DAY([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "4c9eeef4-c90e-432c-87ea-1ade35374027",
-            "summarizeBy": "none",
-            "type": "calculated"
-          }
-        ],
-        "hierarchies": [
-          {
-            "name": "Jerarquía de fechas",
-            "annotations": [
-              {
-                "name": "TemplateId",
-                "value": "DateHierarchy"
-              }
-            ],
-            "levels": [
-              {
-                "name": "Año",
-                "column": "Año",
-                "lineageTag": "099c222c-1432-46e5-bd03-6a3c7b8a12bd",
-                "ordinal": 0
-              },
-              {
-                "name": "Trimestre",
-                "column": "Trimestre",
-                "lineageTag": "d34876ef-1c21-41b4-94dc-783cfae8cd57",
-                "ordinal": 1
-              },
-              {
-                "name": "Mes",
-                "column": "Mes",
-                "lineageTag": "26901596-6e06-4ced-840c-eadcd580a6d7",
-                "ordinal": 2
-              },
-              {
-                "name": "Día",
-                "column": "Día",
-                "lineageTag": "5e2b0daf-bfa5-430e-a026-9df1a988c648",
-                "ordinal": 3
-              }
-            ],
-            "lineageTag": "00da6eb6-d4cc-404f-9b2b-1d587eabf036"
-          }
-        ],
-        "isHidden": true,
-        "lineageTag": "be66f8dd-6122-41b5-b01e-e61250a569c5",
-        "partitions": [
-          {
-            "name": "LocalDateTable_f70aa27b-5a03-432c-a48a-7e9b1c762409-bbce8abd-2db4-438e-b1da-037686b626b9",
-            "mode": "import",
-            "source": {
-              "expression": "Calendar(Date(Year(MIN('Calendario'[Date])), 1, 1), Date(Year(MAX('Calendario'[Date])), 12, 31))",
-              "type": "calculated"
-            }
-          }
-        ],
-        "showAsVariationsOnly": true
-      },
-      {
         "name": "calendarconection",
         "annotations": [
           {
@@ -8087,10 +7810,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -9136,44 +8855,6 @@
                 "    #\"Changed Type\""
               ],
               "type": "m"
-            }
-          }
-        ]
-      },
-      {
-        "name": "PROJECTSUNICOS",
-        "annotations": [
-          {
-            "name": "PBI_Id",
-            "value": "565925b430404a7f9fb6e333a9ce8a7a"
-          }
-        ],
-        "columns": [
-          {
-            "name": "UNICO",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "isNameInferred": true,
-            "lineageTag": "b0a59c2b-540a-4467-bcee-748d77cc3eec",
-            "sourceColumn": "LaneSpot1[UNICO]",
-            "summarizeBy": "none",
-            "type": "calculatedTableColumn"
-          }
-        ],
-        "lineageTag": "e435750c-aac8-4da0-9405-3d9c7c9e22a2",
-        "partitions": [
-          {
-            "name": "PROJECTSUNICOS-13a64456-c007-4351-af56-1e0bd00a07c7",
-            "mode": "import",
-            "source": {
-              "expression": "VALUES(LaneSpot1[UNICO])",
-              "type": "calculated"
             }
           }
         ]
@@ -10802,61 +10483,6 @@
         ]
       },
       {
-        "name": "DayRange",
-        "annotations": [
-          {
-            "name": "PBI_Id",
-            "value": "cb9c541cadae4b8785429caede965248"
-          }
-        ],
-        "columns": [
-          {
-            "name": "Mean",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              }
-            ],
-            "dataType": "double",
-            "extendedProperties": [
-              {
-                "name": "ParameterMetadata",
-                "type": "json",
-                "value": {
-                  "version": 0
-                }
-              }
-            ],
-            "formatString": "0.00",
-            "isNameInferred": false,
-            "lineageTag": "eda0ecb7-ca2c-4ca4-a293-a7dcc2f2fc84",
-            "sourceColumn": "[Value]",
-            "summarizeBy": "none",
-            "type": "calculatedTableColumn"
-          }
-        ],
-        "lineageTag": "80f674cc-91b5-4021-9644-2f9529b054f9",
-        "measures": [
-          {
-            "name": "Mean Value",
-            "expression": "SELECTEDVALUE('DayRange'[Mean], 1)",
-            "formatString": "0.00",
-            "lineageTag": "9d2d1a74-c710-4641-a480-d06d2d19a530"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "DayRange-780f3800-57d9-42eb-ad4f-4a02334744a5",
-            "mode": "import",
-            "source": {
-              "expression": "GENERATESERIES(FLOOR([X-3σ],1),CEILING([X+3σ],1), 1)",
-              "type": "calculated"
-            }
-          }
-        ]
-      },
-      {
         "name": "Desviacion",
         "annotations": [
           {
@@ -11025,121 +10651,6 @@
             "mode": "import",
             "source": {
               "expression": "GENERATESERIES(-1000,1000,1)",
-              "type": "calculated"
-            }
-          }
-        ]
-      },
-      {
-        "name": "my bins",
-        "annotations": [
-          {
-            "name": "PBI_Id",
-            "value": "288efca6a035418d8092ff059f28f990"
-          }
-        ],
-        "columns": [
-          {
-            "name": "value1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "isDataTypeInferred": true,
-            "isNameInferred": true,
-            "lineageTag": "b2c8f6e9-89ef-448f-8abd-4bcb48c48b05",
-            "sourceColumn": "[value1]",
-            "summarizeBy": "none",
-            "type": "calculatedTableColumn"
-          },
-          {
-            "name": "value2",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "isDataTypeInferred": true,
-            "isNameInferred": true,
-            "lineageTag": "e31d4d9e-fca3-4add-a1e1-8d50e14f2a18",
-            "sourceColumn": "[value2]",
-            "summarizeBy": "sum",
-            "type": "calculatedTableColumn"
-          },
-          {
-            "name": "bin from",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "expression": [
-              "",
-              "IFERROR(IF (",
-              "    MOD ( 'my bins'[value2], 'my bins'[value1] ) = 0,",
-              "    'my bins'[value2],",
-              "    BLANK ()",
-              "),BLANK())"
-            ],
-            "formatString": "0",
-            "isDataTypeInferred": true,
-            "lineageTag": "c89d3f31-9e41-4974-a4c8-dcf695e4ec05",
-            "summarizeBy": "sum",
-            "type": "calculated"
-          },
-          {
-            "name": "bin to",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "expression": [
-              "",
-              "'my bins'[bin from]",
-              "    + IF ( ISBLANK ( 'my bins'[bin from] ), BLANK (), 'my bins'[value1] )"
-            ],
-            "formatString": "0",
-            "isDataTypeInferred": true,
-            "lineageTag": "2b083c59-739d-430b-98d1-7a02aec2fb81",
-            "summarizeBy": "sum",
-            "type": "calculated"
-          }
-        ],
-        "lineageTag": "df7968ac-d342-48f0-a211-fd0f6129a40e",
-        "partitions": [
-          {
-            "name": "my bins-fa92d940-3157-4329-9260-4033412af425",
-            "mode": "import",
-            "source": {
-              "expression": [
-                "",
-                " VAR X_value = SUMMARIZE(Scorecard,Scorecard[CarrierName],\"OTA_FULL\",ROUND(AVERAGE(Scorecard[OTA*100]),0))",
-                "VAR series1 =",
-                "    SELECTCOLUMNS ( GENERATESERIES ( 0, 100, 1 ), \"value1\", [Value] )",
-                "VAR series2 =",
-                "    SELECTCOLUMNS (",
-                "        GENERATESERIES (",
-                "            FLOOR ( MINX ( X_value,[OTA_FULL] ), 1 ),",
-                "            CEILING ( MAXX ( X_value,[OTA_FULL] ), 1 ),",
-                "            1",
-                "        ),",
-                "        \"value2\", [Value]",
-                "    )",
-                "RETURN",
-                "    GENERATE ( series1, series2 )"
-              ],
               "type": "calculated"
             }
           }
@@ -11832,10 +11343,6 @@
         "name": "NPS_BBA",
         "annotations": [
           {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          },
-          {
             "name": "PBI_ResultType",
             "value": "Table"
           }
@@ -12243,10 +11750,6 @@
         "name": "Sector",
         "annotations": [
           {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          },
-          {
             "name": "PBI_ResultType",
             "value": "Table"
           }
@@ -12287,10 +11790,6 @@
       {
         "name": "NPS_VMODAL",
         "annotations": [
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          },
           {
             "name": "PBI_ResultType",
             "value": "Table"
