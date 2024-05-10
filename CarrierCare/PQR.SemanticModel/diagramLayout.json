@@ -1,0 +1,166 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 845.35411447537774,
+        "y": 211.73355390598246
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 797.79100191942564,
+            "y": 274.09834894706836
+          },
+          "nodeIndex": "calendarconection",
+          "size": {
+            "height": 297.98311268436839,
+            "width": 234
+          },
+          "zIndex": 61
+        },
+        {
+          "location": {
+            "x": 879.95837937327974,
+            "y": 882.49070183488629
+          },
+          "nodeIndex": "Incidencias",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 60
+        },
+        {
+          "location": {
+            "x": 881.26719088106165,
+            "y": 663.89141465923058
+          },
+          "nodeIndex": "FechasIncidencias",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 59
+        },
+        {
+          "location": {
+            "x": 4258.7824033349434,
+            "y": 349.44656964553815
+          },
+          "nodeIndex": "MedidasCarrierSucces",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 500.74512162229394,
+            "y": 703.69690018773667
+          },
+          "nodeIndex": "Calendarconnection_Alternative",
+          "size": {
+            "height": 367.01666934835521,
+            "width": 234
+          },
+          "zIndex": 62
+        },
+        {
+          "location": {
+            "x": 6204.4,
+            "y": 0
+          },
+          "nodeIndex": "Parameter",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 152.36171737631821,
+            "y": 1085.0567667385963
+          },
+          "nodeIndex": "TotalDayBand",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 7006.3,
+            "y": 0
+          },
+          "nodeIndex": "Band Size",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1701.7689369906202,
+            "y": 11.060708039864757
+          },
+          "nodeIndex": "NormalDistribution",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 8564.9,
+            "y": 0
+          },
+          "nodeIndex": "Desviacion",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 11563.8,
+            "y": 0
+          },
+          "nodeIndex": "NormalDistributionOTA_X",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 12365.7,
+            "y": 0
+          },
+          "nodeIndex": "BandSizeOpEx",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 17
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 63.287087723233967,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}
