@@ -1,0 +1,605 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 454.0008933868026,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 120.46720321931596
+          },
+          "nodeIndex": "Medidas Mes",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 36
+        },
+        {
+          "location": {
+            "x": 843.7,
+            "y": 434
+          },
+          "nodeIndex": "Calendario",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 37
+        },
+        {
+          "location": {
+            "x": 806.5,
+            "y": 0
+          },
+          "nodeIndex": "Fechas min y max",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 38
+        },
+        {
+          "location": {
+            "x": 1461.7061671379374,
+            "y": 764.20339047640766
+          },
+          "nodeIndex": "LaneSpot1",
+          "size": {
+            "height": 225.701408226043,
+            "width": 234
+          },
+          "zIndex": 45
+        },
+        {
+          "location": {
+            "x": 1209.8,
+            "y": 309.2
+          },
+          "nodeIndex": "Scorecard",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 44
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 862.183123132186
+          },
+          "nodeIndex": "Sector",
+          "nodeLineageTag": "736a03af-2076-450f-9959-5bb966930398",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 39
+        },
+        {
+          "location": {
+            "x": 1.9075667789361574,
+            "y": 1165.4697313807321
+          },
+          "nodeIndex": "Utilidad",
+          "nodeLineageTag": "d213b013-5915-4073-98b5-0fa21ac85bb9",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 40
+        },
+        {
+          "location": {
+            "x": 3401.6949854065338,
+            "y": 315.09291360993768
+          },
+          "nodeIndex": "Base/NN",
+          "nodeLineageTag": "be28c052-463d-49b6-9288-afbddc4d4d38",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 35
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1567.3355047097148
+          },
+          "nodeIndex": "Medidas Ingreso",
+          "nodeLineageTag": "7420a7c5-8865-4a03-a100-3664208be759",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 30
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Formatos",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 31
+        },
+        {
+          "location": {
+            "x": 1480.9746478873244,
+            "y": 517.835010060362
+          },
+          "nodeIndex": "Cuentas",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 32
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 613.73575645345716
+          },
+          "nodeIndex": "FVenta",
+          "nodeLineageTag": "cb3a62a4-e15a-42bc-8d10-4db941ea5c82",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 33
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 666.48934287949237
+          },
+          "nodeIndex": "FViajes",
+          "nodeLineageTag": "dfa27ceb-21f4-4bdf-a503-21c8da6a8a9e",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 34
+        },
+        {
+          "location": {
+            "x": 1738.2305835010061,
+            "y": 501.00603621730386
+          },
+          "nodeIndex": "Forecast",
+          "nodeLineageTag": "63f9a1ac-1483-42b5-b2d9-79826221dfaa",
+          "size": {
+            "height": 332.12549657947693,
+            "width": 234
+          },
+          "zIndex": 25
+        },
+        {
+          "location": {
+            "x": 660.69979879275684,
+            "y": 668.8128772635813
+          },
+          "nodeIndex": "Meses",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 43
+        },
+        {
+          "location": {
+            "x": 667.77460102238956,
+            "y": 1098.1149508039352
+          },
+          "nodeIndex": "Años",
+          "size": {
+            "height": 133.40040241448696,
+            "width": 234
+          },
+          "zIndex": 26
+        },
+        {
+          "location": {
+            "x": 3.5732629080307561,
+            "y": 1028.9765392030597
+          },
+          "nodeIndex": "Mes_Sem",
+          "nodeLineageTag": "a8f606c3-c930-48ba-b764-16a462bc4b62",
+          "size": {
+            "height": 124,
+            "width": 234
+          },
+          "zIndex": 27
+        },
+        {
+          "location": {
+            "x": 1104.379598178266,
+            "y": 1018.0779935982521
+          },
+          "nodeIndex": "TablaMes-Sem",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 28
+        },
+        {
+          "location": {
+            "x": 4969.4056274574132,
+            "y": 0
+          },
+          "nodeIndex": "MedidasNiveldeServicio",
+          "nodeLineageTag": "18af767f-2e61-454e-b8ba-7bbf310e39dc",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 29
+        },
+        {
+          "location": {
+            "x": 2414.3211267605652,
+            "y": 434.60764587525142
+          },
+          "nodeIndex": "DíasporSem",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 41
+        },
+        {
+          "location": {
+            "x": 4970.9140054809768,
+            "y": 77.963515671666769
+          },
+          "nodeIndex": "UpDown",
+          "nodeLineageTag": "75e98010-6ce1-44d2-ba58-4deb4feac190",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 478.80201207243545,
+            "y": 437.02213279678062
+          },
+          "nodeIndex": "CalendarioAñoCorriente",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 42
+        },
+        {
+          "location": {
+            "x": 4970.7396138698259,
+            "y": 155.92703134333357
+          },
+          "nodeIndex": "RangoFechaUpDown",
+          "nodeLineageTag": "6bcf0180-4914-4ecd-a341-746b067f7cd5",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 24
+        },
+        {
+          "location": {
+            "x": 664.91054127369694,
+            "y": 840.49566366520844
+          },
+          "nodeIndex": "Años2",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1070.7358674510442,
+            "y": 711.18863848594572
+          },
+          "nodeIndex": "PorjectXB",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 4964.182800617009,
+            "y": 236.57894410712677
+          },
+          "nodeIndex": "UpDownF",
+          "nodeLineageTag": "12e05ce9-384b-4942-89dd-e5eae1581aa9",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 882.46267753918937,
+            "y": 1281.1603942103281
+          },
+          "nodeIndex": "CalendarioDíaCorriente",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 4954.9375902720658,
+            "y": 309.16566559454071
+          },
+          "nodeIndex": "UpDownA",
+          "nodeLineageTag": "0d338032-4c74-4d23-89a4-b11730c9bec3",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 4964.5111595720073,
+            "y": 373.68719580557524
+          },
+          "nodeIndex": "MedidasViajes",
+          "nodeLineageTag": "8b7ecc53-db6a-4a51-98e7-3d1069d17fc0",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 5300.4288642554557,
+            "y": 0
+          },
+          "nodeIndex": "Appointments",
+          "nodeLineageTag": "78852cca-432d-4cf5-9eb1-b3fad341af29",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 5294.9201382388474,
+            "y": 86.028706948046192
+          },
+          "nodeIndex": "Appointments Drop",
+          "nodeLineageTag": "c3fa7732-d0c6-41fb-a07e-c52478f3b00a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 5299.1169133545363,
+            "y": 282.28169467327632
+          },
+          "nodeIndex": "EliminarSH",
+          "nodeLineageTag": "831f071b-562d-4fa4-9be3-53899cfadd77",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 6331.5378429222937,
+            "y": 18.818779644885087
+          },
+          "nodeIndex": "APPEXTRAPICK",
+          "nodeLineageTag": "b0d1397b-a68f-4fbc-b9af-fbe8196471a5",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 6594.0251650529854,
+            "y": 21.507176737011523
+          },
+          "nodeIndex": "APPEXTRADROP",
+          "nodeLineageTag": "6516e11b-cd5d-46b0-b88b-499472e31853",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 6320.6750542190166,
+            "y": 209.69497318586235
+          },
+          "nodeIndex": "Citas Agrizar",
+          "nodeLineageTag": "b371941a-7d77-44a8-b908-18b230c69819",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 21
+        },
+        {
+          "location": {
+            "x": 6296.3702800551082,
+            "y": 537.67941842528808
+          },
+          "nodeIndex": "Tipo de cambio Diario",
+          "nodeLineageTag": "13934a6e-40a3-4074-bf6e-21ecf550b58e",
+          "size": {
+            "height": 228.38308533653301,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 6300.7714813416587,
+            "y": 776.94675962454141
+          },
+          "nodeIndex": "Tipo de cambio_Completo",
+          "nodeLineageTag": "4a6d5e1c-ba2a-4fbd-a3c1-3287b0eecb47",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 6298.949476812465,
+            "y": 949.00417352063346
+          },
+          "nodeIndex": "BaseCurrencyLoad",
+          "nodeLineageTag": "05610564-d803-47d7-bb04-5eecf7145603",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 3398.9405261861712,
+            "y": 236.49574341996765
+          },
+          "nodeIndex": "BASE/NN (2)",
+          "nodeLineageTag": "05e1ac3e-1ae2-41d5-8c7b-6a7398547d77",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1822.7332284617269,
+            "y": 238.37147108855407
+          },
+          "nodeIndex": "Comerciales",
+          "nodeLineageTag": "a898e100-47ff-470f-8c0e-a49e0e7b6df3",
+          "size": {
+            "height": 144.24229259922004,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 6889.29481348252,
+            "y": 685.66775235485738
+          },
+          "nodeIndex": "Score TMS arise",
+          "nodeLineageTag": "2e8608f2-e0d0-4b9a-88a7-6148c16abe7a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 7173.29481348252,
+            "y": 759.66775235485738
+          },
+          "nodeIndex": "All_dates",
+          "nodeLineageTag": "e05db924-9311-444a-a677-622fe2ddedae",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 7457.29481348252,
+            "y": 747.66775235485738
+          },
+          "nodeIndex": "DiasFestivos",
+          "nodeLineageTag": "fc03388c-571e-495e-975f-9c517db3f7e8",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 7741.29481348252,
+            "y": 783.66775235485738
+          },
+          "nodeIndex": "now_date",
+          "nodeLineageTag": "f2f9ac73-6963-43af-896c-de963f74b331",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 8309.29481348252,
+            "y": 783.66775235485738
+          },
+          "nodeIndex": "LastUpdate",
+          "nodeLineageTag": "ec121971-0bee-423d-876b-4417ef54df0f",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 3391.360207323653,
+            "y": 500.7932697459247
+          },
+          "nodeIndex": "Sucursal",
+          "nodeLineageTag": "befab51e-07cd-4775-9896-3879d602481f",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 46
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 52.4228043307455,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}
