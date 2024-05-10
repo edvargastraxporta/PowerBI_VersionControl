@@ -4,7 +4,7 @@
     "annotations": [
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Measures (2)\",\"Scorecard\",\"Fecha\",\"Event History\",\"Event History (2)\",\"Event History (3)\",\"Events\",\"Total Events\",\"No considerar\",\"Parameter1\",\"Transform Sample File\",\"Sample File\",\"Transform File\",\"Event_history\",\"Event_history (2)\",\"Event History (4)\",\"Matrix_Metabase\",\"metabase_load_view\",\"metabase_load_documents\",\"metabase_load_events\",\"metabase_load_delivereddate\",\"matrix_metabase (2)\"]"
+        "value": "[\"Measures (2)\",\"Scorecard\",\"Fecha\",\"Event History\",\"Event History (2)\",\"Event History (3)\",\"Events\",\"Total Events\",\"No considerar\",\"Parameter1\",\"Transform Sample File\",\"Sample File\",\"Transform File\",\"Event_history\",\"Event_history (2)\",\"Event History (4)\",\"Matrix_Metabase\",\"metabase_load_view\",\"metabase_load_documents\",\"metabase_load_events\",\"metabase_load_delivereddate\",\"matrix_metabase (2)\",\"TXP_PULSE\"]"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -496,6 +496,24 @@
         "fromTable": "metabase_load_delivereddate",
         "toColumn": "Column1",
         "toTable": "metabase_load_events"
+      },
+      {
+        "name": "AutoDetected_b702eea2-9c34-43c5-974d-2b61122b75ba",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "Index",
+        "fromTable": "TXP_PULSE",
+        "toColumn": "Index",
+        "toTable": "Total Events"
+      },
+      {
+        "name": "AutoDetected_d645bc01-e1cf-4056-9629-03695d65d19e",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "Index",
+        "fromTable": "TXP_PULSE",
+        "toColumn": "Index",
+        "toTable": "Events"
       }
     ],
     "sourceQueryCulture": "en-US",
@@ -881,6 +899,184 @@
             ],
             "formatString": "0",
             "lineageTag": "7c2cfd02-e191-44c5-8ba9-f2a7b4a3ecb1"
+          },
+          {
+            "name": "PSA_UTTXP",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "CALCULATE(AVERAGE(Scorecard[%UTTXP]),OFFSET(-1,,ORDERBY(Calendario[RankAnio-Semana])),ALLEXCEPT(Calendario,Calendario[RankAnio-Semana],Calendario[MonthName],Calendario[Year]))",
+            "lineageTag": "c748fd83-1bff-4048-a88f-67ba20cc989f"
+          },
+          {
+            "name": "General_pulse",
+            "expression": [
+              "IF(",
+              "HASONEVALUE(",
+              "TXP_PULSE[Index]),",
+              "SWITCH(",
+              "VALUES(",
+              "TXP_PULSE[Index]",
+              "), 1,AVERAGE(Scorecard[%UTTXP]),",
+              "2,AVERAGE(Scorecard[%UTOPSNAL]),",
+              "3,AVERAGE(Scorecard[%UTCarrier]),",
+              "4,AVERAGE(Scorecard[%UTCT])",
+              ")",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "e9ad631c-3847-4f98-9533-b39f7e6525e5"
+          },
+          {
+            "name": "PSA_UTOPS",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "CALCULATE(AVERAGE(Scorecard[%UTOPSNAL]),OFFSET(-1,,ORDERBY(Calendario[RankAnio-Semana])),ALLEXCEPT(Calendario,Calendario[RankAnio-Semana],Calendario[MonthName],Calendario[Year]))",
+            "lineageTag": "6cce9892-84fb-4e8f-833e-9aa2d089d915"
+          },
+          {
+            "name": "PSA_UTCARRIER",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "CALCULATE(AVERAGE(Scorecard[%UTCarrier]),OFFSET(-1,,ORDERBY(Calendario[RankAnio-Semana])),ALLEXCEPT(Calendario,Calendario[RankAnio-Semana],Calendario[MonthName],Calendario[Year]))",
+            "lineageTag": "b284434b-54ce-4955-b981-dac67fea658a"
+          },
+          {
+            "name": "PSA_UTTCT",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "CALCULATE(AVERAGE(Scorecard[%UTCT]),OFFSET(-1,,ORDERBY(Calendario[RankAnio-Semana])),ALLEXCEPT(Calendario,Calendario[RankAnio-Semana],Calendario[MonthName],Calendario[Year]))",
+            "lineageTag": "14fdca18-c0dd-4f24-9932-56a542f4407f"
+          },
+          {
+            "name": "General_pulse_SA",
+            "expression": [
+              "IF(",
+              "HASONEVALUE(",
+              "TXP_PULSE[Index]),",
+              "SWITCH(",
+              "VALUES(",
+              "TXP_PULSE[Index]",
+              "), 1,[PSA_UTTXP],",
+              "2,[PSA_UTOPS],",
+              "3,[PSA_UTCARRIER],",
+              "4,[PSA_UTTCT]",
+              ")",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "08392a2c-0a6d-4234-9353-7a18539b81a7"
+          },
+          {
+            "name": "Last_week",
+            "expression": "CALCULATE(SELECTEDVALUE(Calendario[Week]),OFFSET(-1,,ORDERBY(Calendario[RankAnio-Semana])),ALLEXCEPT(Calendario,Calendario[RankAnio-Semana],Calendario[MonthName],Calendario[Year]))",
+            "lineageTag": "6c9babc4-b5ac-4b58-b307-79f02a910821"
+          },
+          {
+            "name": "Text_week",
+            "expression": "\"Performance \"&SELECTEDVALUE(Calendario[Week])&\" vs \"& [Last_week]",
+            "lineageTag": "b57d0b64-28fa-4d3d-8f99-dca24e2c3d55"
+          },
+          {
+            "name": "% WoWUTTXP",
+            "expression": [
+              "VAR variacion = (DIVIDE(AVERAGE(Scorecard[%UTTXP]),[PSA_UTTXP]))-1 ",
+              "                   RETURN",
+              "                   IF(AVERAGE(Scorecard[%UTTXP])>[PSA_UTTXP],ABS(variacion),variacion)"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "5cf1303f-9e98-4bfd-a607-597dbc3805ba"
+          },
+          {
+            "name": "% WoWUTOPS",
+            "expression": [
+              "VAR variacion = (DIVIDE(AVERAGE(Scorecard[%UTOPSNAL]),[PSA_UTOPS]))-1 ",
+              "                   RETURN",
+              "                   IF(AVERAGE(Scorecard[%UTOPSNAL])>[PSA_UTOPS],ABS(variacion),variacion)"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "33ad4284-8a66-43f7-8b8b-e003f9b3c3a9"
+          },
+          {
+            "name": "% WoWUTCARRIER",
+            "expression": [
+              "VAR variacion = (DIVIDE(AVERAGE(Scorecard[%UTCarrier]),[PSA_UTCARRIER]))-1 ",
+              "                   RETURN",
+              "                   IF(AVERAGE(Scorecard[%UTCarrier])>[PSA_UTCARRIER],ABS(variacion),variacion)"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "d9d4a8bb-eb0a-4385-816c-5ce76f50e991"
+          },
+          {
+            "name": "% WoWUTTCT",
+            "expression": [
+              "VAR variacion = (DIVIDE(AVERAGE(Scorecard[%UTCT]),[PSA_UTTCT]))-1 ",
+              "                   RETURN",
+              "                   IF(AVERAGE(Scorecard[%UTCT])>[PSA_UTTCT],ABS(variacion),variacion)"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "873e2edf-06a5-4555-9d90-7255c755f499"
+          },
+          {
+            "name": "PEND_EXCEL",
+            "expression": "CALCULATE(DISTINCTCOUNT(Matrix_Metabase[load_id]), Matrix_Metabase[excel_cp]=0)",
+            "formatString": "0",
+            "lineageTag": "1bc9aa28-0ae9-4c22-abb3-03eec04a8c5b"
+          },
+          {
+            "name": "PEND_CP",
+            "expression": "CALCULATE(DISTINCTCOUNT(Matrix_Metabase[load_id]), Matrix_Metabase[correct_cp]=0)",
+            "formatString": "0",
+            "lineageTag": "043adec2-aa32-413f-90db-884ac64fbfa4"
+          },
+          {
+            "name": "PEND_ASSET",
+            "expression": "CALCULATE(DISTINCTCOUNT(Matrix_Metabase[load_id]), Matrix_Metabase[asset]=0)",
+            "formatString": "0",
+            "lineageTag": "980f14d3-22b6-4028-bcdc-3baefdcc8336"
+          },
+          {
+            "name": "PEND_SCP",
+            "expression": "CALCULATE(DISTINCTCOUNT(Matrix_Metabase[load_id]), Matrix_Metabase[support_cp]=0)",
+            "formatString": "0",
+            "lineageTag": "020e9265-0f6b-4c8b-b5e7-ccbcf2b76e23"
+          },
+          {
+            "name": "GENERAL_TENDENCY_YEAR",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "CALCULATE(AVERAGE(Scorecard[%UTTXP]),FILTER(Scorecard, SELECTEDVALUE(Calendario[Year])>=2024-1 && SELECTEDVALUE(Calendario[Year])<=2024))",
+            "lineageTag": "289c0bca-c577-4d33-8f59-aacf2a9ab604"
+          },
+          {
+            "name": "GENERAL_TENDENCY_WEEK",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "CALCULATE(AVERAGE(Scorecard[%UTTXP]),Calendario[RankAnio-Semana]>=MAX(Calendario[RankAnio-Semana])-5 && Calendario[RankAnio-Semana]<=MAX(Calendario[RankAnio-Semana]) )",
+            "lineageTag": "113af99f-51d7-4dd3-996e-0cd8e5a50e55"
           }
         ],
         "partitions": [
@@ -6626,10 +6822,61 @@
               }
             ],
             "dataType": "string",
-            "expression": "\"week\"&\" \"&WEEKNUM(Calendario[Date],21)",
+            "expression": "\"Semana\"&\" \"&WEEKNUM(Calendario[Date],13)",
             "isDataTypeInferred": true,
             "lineageTag": "b5851831-0313-412f-b97e-42cb30f16411",
             "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Week2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "expression": "WEEKNUM(Calendario[Date],13)",
+            "isDataTypeInferred": true,
+            "lineageTag": "f89e0dbf-cc53-4484-af10-d6bc23f652d2",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          },
+          {
+            "name": "Anio-Semana",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": "Calendario[Year]*100+Calendario[Week2]",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "8ccfc94d-5fc9-4300-abd8-5dde64f7b7a8",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          },
+          {
+            "name": "RankAnio-Semana",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": "RANKX(Calendario,Calendario[Anio-Semana],,ASC,Dense)",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "9b63a39a-4cc7-4529-bb79-ec2da3538267",
+            "summarizeBy": "sum",
             "type": "calculated"
           }
         ],
@@ -7620,7 +7867,7 @@
             "formatString": "0",
             "lineageTag": "22581a59-aac2-4300-9fcc-8a87d9bae79f",
             "sourceColumn": "Index",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "0da5ea4d-6938-46f2-9931-f9103874ffb0",
@@ -7682,7 +7929,7 @@
             "formatString": "0",
             "lineageTag": "05033ff6-6bb5-475d-9ff5-99cd4842ce8e",
             "sourceColumn": "Index",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "1f659530-5835-46ae-8306-0910aa8478f1",
@@ -15063,6 +15310,67 @@
                 "    Source = Csv.Document(File.Contents(\"C:\\Users\\Eduardo Vargas\\OneDrive - Traxión\\Escritorio\\Producto\\Queries Metabase\\matrix_metabase.csv\"),[Delimiter=\",\", Columns=18, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"\", Int64.Type}, {\"id\", Int64.Type}, {\"tms_id\", Int64.Type}, {\"published\", Int64.Type}, {\"assigned\", Int64.Type}, {\"assets\", Int64.Type}, {\"ccp_generate\", Int64.Type}, {\"ccp_certified\", Int64.Type}, {\"ccp_correct\", Int64.Type}, {\"started\", Int64.Type}, {\"checkin_pickup\", Int64.Type}, {\"loading\", Int64.Type}, {\"loaded\", Int64.Type}, {\"in_transit\", Int64.Type}, {\"checkin_delivery\", Int64.Type}, {\"unloading\", Int64.Type}, {\"unloaded\", Int64.Type}, {\"delivered\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "TXP_PULSE",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2dae0498-85b8-4316-932a-15267f07cefb",
+            "sortByColumn": "Index",
+            "sourceColumn": "Category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Index",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "23b18b30-f854-429d-a9be-3eb67f0a6184",
+            "sourceColumn": "Index",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "6af1e3e3-c119-4825-8a04-ef151ddd0182",
+        "partitions": [
+          {
+            "name": "TXP_PULSE",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"PclLCsAgDAXAq4Ss3fRzAUlDEcTI00JBvP81Gii4nRmDn2Z0a1HETP2tHHjjGX636izJijb3fblEICncjmXdAKVLSax0WPY8ec4P\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Category = _t, Index = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Category\", type text}, {\"Index\", Int64.Type}})",
                 "in",
                 "    #\"Changed Type\""
               ],
