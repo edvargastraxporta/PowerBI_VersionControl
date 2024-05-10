@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "LANES_TMS_TMSARISE"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9c2ca645-eda5-4ca9-971e-2a90c944423c"
+  }
+}

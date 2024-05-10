@@ -1,0 +1,535 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 318.88098000000036,
+            "y": 299.39380900000026
+          },
+          "nodeIndex": "Scorecard",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 21
+        },
+        {
+          "location": {
+            "x": 555.42766100000017,
+            "y": 3.5431220000000039
+          },
+          "nodeIndex": "Clientes",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 1382.8332230000003,
+            "y": 325.02580700000016
+          },
+          "nodeIndex": "Documentos",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 979.07204099999956,
+            "y": 311.79473600000028
+          },
+          "nodeIndex": "Logos",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 24
+        },
+        {
+          "location": {
+            "x": 700.15257399999928,
+            "y": 230.3029300000004
+          },
+          "nodeIndex": "Clientes (2)",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 25
+        },
+        {
+          "location": {
+            "x": 1434.363218,
+            "y": 687.36566800000071
+          },
+          "nodeIndex": "Logos (2)",
+          "nodeLineageTag": "ee869220-e98a-4edf-b13a-38a0b1fbf85c",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 26
+        },
+        {
+          "location": {
+            "x": 1514.1,
+            "y": 74
+          },
+          "nodeIndex": "DestinationIDNoRegistrado",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 27
+        },
+        {
+          "location": {
+            "x": 1898.6,
+            "y": 74
+          },
+          "nodeIndex": "DestinoModelo",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 28
+        },
+        {
+          "location": {
+            "x": 2283.2,
+            "y": 86
+          },
+          "nodeIndex": "Estado",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 29
+        },
+        {
+          "location": {
+            "x": 2667.8,
+            "y": 74
+          },
+          "nodeIndex": "OrigenModelo",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 30
+        },
+        {
+          "location": {
+            "x": 3052.4,
+            "y": 0
+          },
+          "nodeIndex": "Rutas",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 31
+        },
+        {
+          "location": {
+            "x": 3416.2,
+            "y": 0
+          },
+          "nodeIndex": "Ubicación",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 32
+        },
+        {
+          "location": {
+            "x": 3767.2,
+            "y": 0
+          },
+          "nodeIndex": "Medidas",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 33
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Fechas",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 38
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 288.76444300000031
+          },
+          "nodeIndex": "Calendario",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 39
+        },
+        {
+          "location": {
+            "x": 4131,
+            "y": 0
+          },
+          "nodeIndex": "Seccion",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 35
+        },
+        {
+          "location": {
+            "x": 4527.2,
+            "y": 0
+          },
+          "nodeIndex": "Sector",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 36
+        },
+        {
+          "location": {
+            "x": 4902.6,
+            "y": 0
+          },
+          "nodeIndex": "OriginIDNoRegistrado",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 37
+        },
+        {
+          "location": {
+            "x": 5266.4,
+            "y": 0
+          },
+          "nodeIndex": "Destinos_ID",
+          "size": {
+            "height": 143.94404900000004,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 5630.2,
+            "y": 0
+          },
+          "nodeIndex": "Origenes_ID",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 6053.2,
+            "y": 24
+          },
+          "nodeIndex": "ShipingLocationCountries",
+          "nodeLineageTag": "8b613016-e33b-4c75-a171-fa85f9ccbe61",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 6476.3,
+            "y": 0
+          },
+          "nodeIndex": "Shipping Location (lat_lon)",
+          "nodeLineageTag": "b4280aa4-ca6c-4b74-b5ad-0946c8ed06d1",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 6845.9,
+            "y": 0
+          },
+          "nodeIndex": "Tipo de cambio Diario",
+          "nodeLineageTag": "a561c30a-fe7b-4a42-b031-0c7da6670010",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 7215.5,
+            "y": 12
+          },
+          "nodeIndex": "Tipo de cambio_Completo",
+          "nodeLineageTag": "6b6b477c-0b7e-4e99-8cc2-848b2755deae",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 7611.7,
+            "y": 0
+          },
+          "nodeIndex": "EstadosOrigenMultileg",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 8007.9,
+            "y": 0
+          },
+          "nodeIndex": "EstadosDestinoMultileg",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 8404.1,
+            "y": 0
+          },
+          "nodeIndex": "EstadosOrigenAgrizar",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 8800.3,
+            "y": 0
+          },
+          "nodeIndex": "EstadosOrigenMastronardi",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 9196.5,
+            "y": 0
+          },
+          "nodeIndex": "EstadosDestinoAgrizar",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 9592.7,
+            "y": 0
+          },
+          "nodeIndex": "EstadosDestinoMastronardi",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 9876.7,
+            "y": 458.43337200000042
+          },
+          "nodeIndex": "CiudadDestinoMultileg",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 10160.7,
+            "y": 458.43337200000042
+          },
+          "nodeIndex": "CiudadDestinoMastronardi",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 10444.7,
+            "y": 458.43337200000042
+          },
+          "nodeIndex": "CiudadDestinoAgrizar",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 10728.7,
+            "y": 458.43337200000042
+          },
+          "nodeIndex": "CiudadOrigenMultileg",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 11012.7,
+            "y": 458.43337200000042
+          },
+          "nodeIndex": "CiudadOrigenMastronardi",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 11296.7,
+            "y": 458.43337200000042
+          },
+          "nodeIndex": "CiudadOrigenAgrizar",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 11580.7,
+            "y": 470.43337200000042
+          },
+          "nodeIndex": "ubicaciones_mex",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 11864.7,
+            "y": 470.43337200000042
+          },
+          "nodeIndex": "ubicaciones_usa",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 12148.7,
+            "y": 494.43337200000042
+          },
+          "nodeIndex": "ABCANADA",
+          "nodeLineageTag": "0d3287b1-8d32-43cd-9c67-67546acb9b8f",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 12432.7,
+            "y": 494.43337200000042
+          },
+          "nodeIndex": "ABMEX",
+          "nodeLineageTag": "112e3066-9d79-403a-b076-c82af484813a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 12716.7,
+            "y": 494.43337200000042
+          },
+          "nodeIndex": "ABUSA",
+          "nodeLineageTag": "baf11476-d7a9-415d-9029-555416223f64",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 13000.7,
+            "y": 408.43337200000042
+          },
+          "nodeIndex": "TMSARISE",
+          "nodeLineageTag": "644be969-2b6c-449b-93e6-2ad69d10f4b9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 56.447393005377691,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}
