@@ -1,0 +1,282 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 16.715582271612462,
+            "y": 693.1698207750577
+          },
+          "nodeIndex": "Measures (2)",
+          "nodeLineageTag": "6f10dc22-b308-4ae7-9304-768c69a510a7",
+          "size": {
+            "height": 124,
+            "width": 260.00201686695272
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1468.3190618552992,
+            "y": 414.07626092503824
+          },
+          "nodeIndex": "Scorecard",
+          "nodeLineageTag": "67ad6e1f-86aa-4faa-8f95-f79a66a107ae",
+          "size": {
+            "height": 491.50041522443053,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1463.3220483961377,
+            "y": 203.98764474864279
+          },
+          "nodeIndex": "Fecha",
+          "nodeLineageTag": "48fc6ee9-ac2b-4d05-a498-6f0d2580abad",
+          "size": {
+            "height": 137.28643459534027,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1458.4192272429887,
+            "y": 5.5718607572041527
+          },
+          "nodeIndex": "Calendario",
+          "nodeLineageTag": "db9dc0e3-6221-4a8f-9a26-2eac6f63897a",
+          "size": {
+            "height": 124,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 360.313662299202,
+            "y": 0
+          },
+          "nodeIndex": "Event History",
+          "nodeLineageTag": "8e292633-f0c2-4bb3-8db6-d2abfe89fecf",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 1064.395209226715,
+            "y": 437.9856713828031
+          },
+          "nodeIndex": "Event History (2)",
+          "nodeLineageTag": "e2cc26af-cb2d-452d-bed8-8d903a3a1679",
+          "size": {
+            "height": 493.0714793214164,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 362.17094921827,
+            "y": 73.849503420116321
+          },
+          "nodeIndex": "Events",
+          "nodeLineageTag": "0da5ea4d-6938-46f2-9931-f9103874ffb0",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 360.313662299202,
+            "y": 126.35659256934068
+          },
+          "nodeIndex": "Total Events",
+          "nodeLineageTag": "1f659530-5835-46ae-8306-0910aa8478f1",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 362.17094921827004,
+            "y": 186.92147103764086
+          },
+          "nodeIndex": "Event History (3)",
+          "nodeLineageTag": "36c8bc98-7b3b-4b30-afd1-6bd7e5dda223",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 18.572869190680521,
+            "y": 958.97390957841162
+          },
+          "nodeIndex": "No considerar",
+          "nodeLineageTag": "2759000a-f2d3-4d74-921d-48ae3f2a5d14",
+          "size": {
+            "height": 124,
+            "width": 263.71659070508883
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 362.17094921827,
+            "y": 427.73413326769986
+          },
+          "nodeIndex": "Event_history",
+          "nodeLineageTag": "3155fb53-2374-41c2-84c7-2b27fea22654",
+          "size": {
+            "height": 280.4037331195151,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 1056.481919337305,
+            "y": 1019.4636594844167
+          },
+          "nodeIndex": "Event History (4)",
+          "nodeLineageTag": "844186b3-93c4-44d5-936b-9ec6167c0f55",
+          "size": {
+            "height": 364.60593034414228,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 360.89061667785188,
+            "y": 343.93256380588087
+          },
+          "nodeIndex": "Event_history (2)",
+          "nodeLineageTag": "67cccdf4-53ab-403f-9682-d7ad13ab0b4d",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 16.797869137976221,
+            "y": 858.91673660171034
+          },
+          "nodeIndex": "Table",
+          "nodeLineageTag": "e5cf8c0c-3a2d-46e6-acff-ce0227206846",
+          "size": {
+            "height": 200,
+            "width": 261.85930378602075
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1476.0866841428726,
+            "y": 1012.1595753915617
+          },
+          "nodeIndex": "Matrix_Metabase",
+          "nodeLineageTag": "ba307d5c-a25a-455b-9544-ecb1494ca2e9",
+          "size": {
+            "height": 384.48467814233982,
+            "width": 226.11630024065721
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 655.92343884981074,
+            "y": 98.436206710606726
+          },
+          "nodeIndex": "metabase_load_view",
+          "nodeLineageTag": "683f4d7d-52d1-4a1f-930a-6616f1109c2d",
+          "size": {
+            "height": 300,
+            "width": 297.14775524831384
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 653.18768790867091,
+            "y": 193.15783958307736
+          },
+          "nodeIndex": "metabase_load_documents",
+          "nodeLineageTag": "337c2ae2-4d9f-4ec3-ac3c-56772dd3d932",
+          "size": {
+            "height": 270.28340929491128,
+            "width": 299.00504216738193
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 648.19313475475,
+            "y": 306.32580504978239
+          },
+          "nodeIndex": "metabase_load_events",
+          "nodeLineageTag": "531de8f1-d70c-4ba5-ac13-43d36f9e751c",
+          "size": {
+            "height": 300,
+            "width": 306.43418984365405
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 661.60794229055182,
+            "y": 18.222185481681208
+          },
+          "nodeIndex": "metabase_load_delivereddate",
+          "nodeLineageTag": "d1b9feca-1f92-4683-bb76-51a8d27a62ef",
+          "size": {
+            "height": 300,
+            "width": 288.6665564450434
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1735.6034795836867,
+            "y": 548.32212676695076
+          },
+          "nodeIndex": "matrix_metabase (2)",
+          "nodeLineageTag": "c745159b-8ed8-4fc0-8eca-b0c22765c912",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 60.365975371386469,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

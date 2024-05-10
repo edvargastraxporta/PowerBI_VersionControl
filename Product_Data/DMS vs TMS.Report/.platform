@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "DMS vs TMS"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "84221e8d-fb04-4a06-b9b0-694a4e0c78ee"
+  }
+}
