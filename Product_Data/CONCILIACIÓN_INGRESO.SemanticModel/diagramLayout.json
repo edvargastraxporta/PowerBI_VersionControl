@@ -1,0 +1,409 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 246.63330076680683,
+        "y": 369.24528457659079
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 1226.9678849936379
+          },
+          "nodeIndex": "2023",
+          "nodeLineageTag": "31786230-c8eb-4330-b231-35a48b8c9dfb",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1269.2478794108044
+          },
+          "nodeIndex": "2024",
+          "nodeLineageTag": "715ce3e3-d245-456a-aee5-4341cc2ea27f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 11.25
+          },
+          "nodeIndex": "All_dates",
+          "nodeLineageTag": "3de4bbf2-796a-4fe6-8319-64bc067e8a4e",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 2,
+            "y": 73.25
+          },
+          "nodeIndex": "DiasFestivos",
+          "nodeLineageTag": "50321898-87bf-4f97-800a-3692397f02b1",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 655.66397878523412,
+            "y": 280.02732979753904
+          },
+          "nodeIndex": "Fechas",
+          "nodeLineageTag": "a47fcda8-3fc1-4efa-b15d-0ccd8c0b1a28",
+          "size": {
+            "height": 166,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 298.25
+          },
+          "nodeIndex": "now_date",
+          "nodeLineageTag": "365b03e7-698c-4728-8259-4ff70485d2f2",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 658.30131137418971,
+            "y": 563.85132533127262
+          },
+          "nodeIndex": "Scorecard",
+          "nodeLineageTag": "ee796000-15b8-4010-ba4c-d534cffcb736",
+          "size": {
+            "height": 493.0786411717288,
+            "width": 234
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 361.25
+          },
+          "nodeIndex": "Tipo de cambio Diario",
+          "nodeLineageTag": "56095f79-d907-4b5c-8a02-fa056dda573f",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 658.48264507971192,
+            "y": 0
+          },
+          "nodeIndex": "Calendario",
+          "nodeLineageTag": "b1aaa9c0-67d3-4e96-8977-29e09a983d1b",
+          "size": {
+            "height": 169,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1314.3465401224494
+          },
+          "nodeIndex": "Anulaciones",
+          "nodeLineageTag": "747623b0-33cd-438f-aeb3-09306bab26d9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 21
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1373.5385108017658
+          },
+          "nodeIndex": "Facturaciones",
+          "nodeLineageTag": "c1b9fef2-c0e6-4487-8ade-2a8af2f0d8e2",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 589.36760920460426
+          },
+          "nodeIndex": "anulaciones_saphana",
+          "nodeLineageTag": "684d59ac-75b9-47c6-b04e-c98fac48876f",
+          "size": {
+            "height": 176,
+            "width": 273.46132812268911
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 651.11191402437
+          },
+          "nodeIndex": "facturaciones_saphana",
+          "nodeLineageTag": "f01f57a5-1612-40e6-8dfb-8ff94697098c",
+          "size": {
+            "height": 300,
+            "width": 272.05199497545021
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 2.8186662944777936,
+            "y": 707.12491946222735
+          },
+          "nodeIndex": "facturaciones_saphana (2)",
+          "nodeLineageTag": "bc2765b9-3175-487f-a8c3-32c711658699",
+          "size": {
+            "height": 300,
+            "width": 267.82399553373352
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 773.36357738245567
+          },
+          "nodeIndex": "facturaciones_saphana (3)",
+          "nodeLineageTag": "5ba1d01e-c575-42ef-88af-63f7593d0cbb",
+          "size": {
+            "height": 300,
+            "width": 277.6893275644058
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 247.20825904345656,
+            "y": 0
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "6b93bc1a-3168-4194-ba79-bbe24570336c",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1113.7359933006,
+            "y": 402.11463767705322
+          },
+          "nodeIndex": "Referencias_S_SH",
+          "nodeLineageTag": "883e1cdb-675b-4f86-95cc-f4cc7504fa46",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 946.74938618415308,
+            "y": 1118.0251984559852
+          },
+          "nodeIndex": "facturaciones_saphana_lastupdate (3)",
+          "nodeLineageTag": "997c5fdb-79ca-4165-9f30-3f32e7cf8f20",
+          "size": {
+            "height": 300,
+            "width": 335.47198660120057
+          },
+          "zIndex": 24
+        },
+        {
+          "location": {
+            "x": 945.34005303691458,
+            "y": 1003.8692135296345
+          },
+          "nodeIndex": "facturaciones_saphana_lastupdate (5)",
+          "nodeLineageTag": "5bb57379-a33c-4e29-a560-2082e9ea25e0",
+          "size": {
+            "height": 300,
+            "width": 338.29065289567836
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1396.3266601533612,
+            "y": 686.76925540088291
+          },
+          "nodeIndex": "facturaciones_saphana_lastupdate (6)",
+          "nodeLineageTag": "74b57387-7da3-488a-acca-14f160ea952f",
+          "size": {
+            "height": 300,
+            "width": 348.15598492635058
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1794.4826450797118,
+            "y": 686.76925540088291
+          },
+          "nodeIndex": "facturaciones_saphana_lastupdate (7)",
+          "nodeLineageTag": "66de8d97-d83e-4b2d-b5ce-50bf57d805b9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 264.67090608796963,
+            "y": 292.155974173992
+          },
+          "nodeIndex": "Reference_Table",
+          "nodeLineageTag": "ca8a4409-f430-4110-8540-9394492e3366",
+          "size": {
+            "height": 222.48667690186062,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 350.64022806954267,
+            "y": 731.86791611252761
+          },
+          "nodeIndex": "History_Table",
+          "nodeLineageTag": "59b83f79-eedf-43e7-a345-167ab8702c37",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2078.4826450797118,
+            "y": 772.76925540088291
+          },
+          "nodeIndex": "Comentarios",
+          "nodeLineageTag": "83230121-92b9-49b6-91b0-6f23b8d12587",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2362.4826450797118,
+            "y": 686.76925540088291
+          },
+          "nodeIndex": "Text_Reference",
+          "nodeLineageTag": "40afad8e-b02e-4963-84f2-118f48cff36c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2646.4826450797118,
+            "y": 760.76925540088291
+          },
+          "nodeIndex": "Last_Sunday",
+          "nodeLineageTag": "4c9f6274-5588-47a1-8e71-b51029021877",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1.4093331472388826,
+            "y": 843.8302347444004
+          },
+          "nodeIndex": "IngresoMes",
+          "size": {
+            "height": 300,
+            "width": 288.963992742317
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 944.65475729465743,
+            "y": 871.39189768917845
+          },
+          "nodeIndex": "PreviousIngresoMes",
+          "size": {
+            "height": 300,
+            "width": 335.47198660120057
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 942.48264507971192,
+            "y": 686.76925540088291
+          },
+          "nodeIndex": "IngresoNoSHMes",
+          "size": {
+            "height": 300,
+            "width": 338.29065289567825
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2930.4826450797118,
+            "y": 686.76925540088291
+          },
+          "nodeIndex": "PreviousIngresoNoSHMes",
+          "nodeLineageTag": "1f30b038-7643-4a4a-8282-1c29e05e9ac9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 70.955543900968792,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

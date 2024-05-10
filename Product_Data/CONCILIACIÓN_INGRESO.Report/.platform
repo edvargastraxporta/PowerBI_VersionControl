@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CONCILIACIÓN_INGRESO"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f8917e17-b7c7-47cb-baaa-6635c1ea501c"
+  }
+}
