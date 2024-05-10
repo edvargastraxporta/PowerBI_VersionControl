@@ -1,0 +1,256 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 276.02567177377512,
+            "y": 97.324776075408323
+          },
+          "nodeIndex": "All_dates",
+          "nodeLineageTag": "af11f015-d1b7-4b99-a210-fa711b9fc2ba",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 575.91543113302532,
+            "y": 0
+          },
+          "nodeIndex": "Comments",
+          "nodeLineageTag": "1d1421ce-11b1-4748-9dc0-be017c890052",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "CostoMes",
+          "nodeLineageTag": "716930d9-bac5-4038-ad76-600b8c746467",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 56.6417179175636
+          },
+          "nodeIndex": "CostoNoLoadMes",
+          "nodeLineageTag": "79abc7a7-5105-4584-b1c6-988ab49fac6a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 275.90787758737588,
+            "y": 0
+          },
+          "nodeIndex": "DiasFestivos",
+          "nodeLineageTag": "c02027d5-37c6-4787-b1cf-081d7fe7a720",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 271.90598920096363,
+            "y": 279.77357287166
+          },
+          "nodeIndex": "Format_Measures",
+          "nodeLineageTag": "c28abc3d-83e8-40a6-9eb3-fa1c36207917",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 263.93166097473863,
+            "y": 410.86408758547532
+          },
+          "nodeIndex": "now_date",
+          "nodeLineageTag": "0adeac2b-ad0e-4a0b-90dd-dd1a2d82bef8",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 123.14563503419009
+          },
+          "nodeIndex": "PreviousCostoMes",
+          "nodeLineageTag": "64bf344e-ddfe-4b34-b30c-cc5c6b7c48e5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 256.22236966791166
+          },
+          "nodeIndex": "PreviousCostoNoLoadMes",
+          "nodeLineageTag": "6dd47ffc-5995-435b-b2bb-9fa9fe4f4451",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 570.43221284372157,
+            "y": 117.70580722282025
+          },
+          "nodeIndex": "Referencias_S_Load",
+          "nodeLineageTag": "aae95cf8-0829-4ab4-bd50-3b130c80faa6",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 1506.0041407805,
+            "y": 4.8272449863219151
+          },
+          "nodeIndex": "Scorecard",
+          "nodeLineageTag": "1942b7de-92e2-4ed1-a204-ac1c7e436698",
+          "size": {
+            "height": 528.71613358939237,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 564.88252399647627,
+            "y": 300.67871409433417
+          },
+          "nodeIndex": "Tipo de cambio Diario",
+          "nodeLineageTag": "d5df8718-954b-45e2-a757-847d010d0b15",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 567.94187343673457,
+            "y": 486.53936248067339
+          },
+          "nodeIndex": "MaxLoadLength",
+          "nodeLineageTag": "9d0ec174-68d7-4e7f-b0dd-8e040e367da2",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 563.96380338193467,
+            "y": 614.474849857129
+          },
+          "nodeIndex": "CostoMes_New",
+          "nodeLineageTag": "42471f92-cea1-4d95-9910-3456a6c8b04d",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 563.50444307466341,
+            "y": 829.116144456405
+          },
+          "nodeIndex": "PreviousCostoMes_New",
+          "nodeLineageTag": "4a89a1c0-475f-4016-aa6b-21ed23c66e87",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 566.56379251492172,
+            "y": 1055.1264708229771
+          },
+          "nodeIndex": "Comentarios",
+          "nodeLineageTag": "39b085c0-4cc0-496a-a2d7-0736b08851b8",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 263.49540734295988,
+            "y": 539.32000869361013
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "cc39fd69-4e8a-4072-84c0-029f4cbe9e14",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 1128.9275866456255,
+            "y": 236.6817663843639
+          },
+          "nodeIndex": "History_Table_Costo",
+          "nodeLineageTag": "d3830ef1-621a-4ab2-a8a1-70c8b1432785",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 17
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 63.287087723233967,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

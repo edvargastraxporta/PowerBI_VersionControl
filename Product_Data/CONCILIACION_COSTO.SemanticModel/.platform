@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CONCILIACION_COSTO"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cf6a5afe-f535-463c-bb3a-4592cb7729b4"
+  }
+}
