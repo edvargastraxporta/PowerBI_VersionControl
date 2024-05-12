@@ -24732,6 +24732,15 @@
         "fromTable": "Score TMS arise",
         "toColumn": "LoadID",
         "toTable": "Fechas min y max"
+      },
+      {
+        "name": "AutoDetected_94023431-7050-46c6-aa7e-f5c4cd4c74f1",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "Index",
+        "fromTable": "Años",
+        "toColumn": "Index",
+        "toTable": "DiasFestivos"
       }
     ],
     "sourceQueryCulture": "en-US",
@@ -24741,7 +24750,11 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Table"
+            "value": "Exception"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -32911,7 +32924,7 @@
             "formatString": "0",
             "lineageTag": "07432afd-0069-456f-b215-11204e519430",
             "sourceColumn": "Index",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           },
           {
             "name": "loadTypeManual",
@@ -46058,6 +46071,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -46620,6 +46637,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -46651,20 +46672,6 @@
                 "relationship": "8502b552-3566-4313-b289-4ae3eda3c7f7"
               }
             ]
-          },
-          {
-            "name": "Index",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "lineageTag": "d9a8e0ec-96d8-4a71-8137-46e5bb078da0",
-            "sourceColumn": "Index",
-            "summarizeBy": "sum"
           },
           {
             "name": "Month",
@@ -46704,6 +46711,20 @@
             "lineageTag": "a88a2dc0-c692-45ec-8796-90f0d55055de",
             "sourceColumn": "description",
             "summarizeBy": "none"
+          },
+          {
+            "name": "Index",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "561d66af-1fd8-4a1f-af34-ad80c4b46d6b",
+            "sourceColumn": "Index",
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "fc03388c-571e-495e-975f-9c517db3f7e8",
@@ -46717,7 +46738,8 @@
                 "let",
                 "    Source = Csv.Document(File.Contents(\"C:\\Users\\Eduardo Vargas\\OneDrive - Traxión\\Escritorio\\XB\\dias_festivos.csv\"),[Delimiter=\",\", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"year\", Int64.Type}, {\"Index\", Int64.Type}, {\"days\", Int64.Type}, {\"months\", type text}}),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Promoted Headers\",{{\"\", \"Index\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns1\",{{\"year\", Int64.Type}, {\"Index\", Int64.Type}, {\"days\", Int64.Type}, {\"months\", type text}}),",
                 "    #\"Invoked Custom Function\" = Table.AddColumn(#\"Changed Type\", \"MonthName\", each Meses_([months])),",
                 "    #\"Expanded MonthName\" = Table.ExpandTableColumn(#\"Invoked Custom Function\", \"MonthName\", {\"MonthNum\"}, {\"MonthName.MonthNum\"}),",
                 "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Expanded MonthName\",{\"MonthName.MonthNum\", \"days\", \"year\", \"Index\", \"months\"}),",
