@@ -1235,6 +1235,24 @@
         "fromTable": "PreviousIngresoMes",
         "toColumn": "REFERENCE_ID",
         "toTable": "Text_Reference"
+      },
+      {
+        "name": "AutoDetected_59d5cda6-004d-4da1-943d-78abc639f392",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "Index",
+        "fromTable": "Comentarios",
+        "toColumn": "Index",
+        "toTable": "DiasFestivos"
+      },
+      {
+        "name": "AutoDetected_5c24be6c-ed35-4425-ab00-17cd8d0def18",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "Index",
+        "fromTable": "Last_Sunday",
+        "toColumn": "Index",
+        "toTable": "DiasFestivos"
       }
     ],
     "sourceQueryCulture": "en-US",
@@ -1450,6 +1468,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -1496,20 +1518,6 @@
             ]
           },
           {
-            "name": "Index",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "lineageTag": "e51cb82f-3e7c-4770-bea9-8089a0833eac",
-            "sourceColumn": "Index",
-            "summarizeBy": "sum"
-          },
-          {
             "name": "Month",
             "annotations": [
               {
@@ -1534,6 +1542,20 @@
             "lineageTag": "7405c617-2715-4c9d-885a-b5a2ece0a61c",
             "sourceColumn": "description",
             "summarizeBy": "none"
+          },
+          {
+            "name": "Index",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "8890c793-4f08-448e-9b3f-1739d3d478fb",
+            "sourceColumn": "Index",
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "50321898-87bf-4f97-800a-3692397f02b1",
@@ -1547,7 +1569,8 @@
                 "let",
                 "    Source = Csv.Document(File.Contents(\"C:\\Users\\Eduardo Vargas\\OneDrive - Traxión\\Escritorio\\XB\\dias_festivos.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"year\", Int64.Type}, {\"Index\", Int64.Type}, {\"days\", Int64.Type}, {\"months\", type text}, {\"description\", type text}}),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Promoted Headers\",{{\"\", \"Index\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns1\",{{\"year\", Int64.Type}, {\"Index\", Int64.Type}, {\"days\", Int64.Type}, {\"months\", type text}, {\"description\", type text}}),",
                 "    #\"Invoked Custom Function\" = Table.AddColumn(#\"Changed Type\", \"MonthName\", each Meses([months])),",
                 "    #\"Expanded MonthName\" = Table.ExpandTableColumn(#\"Invoked Custom Function\", \"MonthName\", {\"MonthNum\"}, {\"MonthName.MonthNum\"}),",
                 "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Expanded MonthName\",{\"MonthName.MonthNum\", \"days\", \"year\", \"Index\", \"months\"}),",
@@ -15517,10 +15540,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Exception"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -21248,10 +21267,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Exception"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -36748,7 +36763,7 @@
             "formatString": "0",
             "lineageTag": "f3cc421d-80dc-414a-b8e2-8e7c895fdfc8",
             "sourceColumn": "Index",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "83230121-92b9-49b6-91b0-6f23b8d12587",
@@ -37095,7 +37110,7 @@
             "formatString": "0",
             "lineageTag": "0bc3bce3-afc2-496e-9d90-f250734afddb",
             "sourceColumn": "Index",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           }
         ],
         "description": "Determines the real Exchange Rate matching with DOF(Diario Oficial de la Federación) data and the one integrated into SAP Billing Information.",

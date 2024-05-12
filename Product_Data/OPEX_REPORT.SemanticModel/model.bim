@@ -689,6 +689,15 @@
         "joinOnDateBehavior": "datePartOnly",
         "toColumn": "Date",
         "toTable": "LocalDateTable_c9506056-c96f-42d7-8def-27256e54df7c"
+      },
+      {
+        "name": "AutoDetected_ffda4cca-d9f6-4817-bd10-50d1d123a778",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "Index",
+        "fromTable": "dias_festivos",
+        "toColumn": "Index",
+        "toTable": "DiasFestivos"
       }
     ],
     "sourceQueryCulture": "en-US",
@@ -904,6 +913,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -950,20 +963,6 @@
             ]
           },
           {
-            "name": "Index",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "lineageTag": "e51cb82f-3e7c-4770-bea9-8089a0833eac",
-            "sourceColumn": "Index",
-            "summarizeBy": "sum"
-          },
-          {
             "name": "Month",
             "annotations": [
               {
@@ -988,6 +987,20 @@
             "lineageTag": "4993facd-f2a0-478a-8e02-458faf4b20b1",
             "sourceColumn": "description",
             "summarizeBy": "none"
+          },
+          {
+            "name": "Index",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "5eaf7626-7bdd-4f90-9217-16321ee595bf",
+            "sourceColumn": "Index",
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "50321898-87bf-4f97-800a-3692397f02b1",
@@ -1001,7 +1014,8 @@
                 "let",
                 "    Source = Csv.Document(File.Contents(\"C:\\Users\\Eduardo Vargas\\OneDrive - Traxión\\Escritorio\\XB\\dias_festivos.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Index\", Int64.Type}, {\"days\", Int64.Type}, {\"months\", type text}, {\"description\", type text}, {\"year\", Int64.Type}}),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Promoted Headers\",{{\"\", \"Index\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns1\",{{\"Index\", Int64.Type}, {\"days\", Int64.Type}, {\"months\", type text}, {\"description\", type text}, {\"year\", Int64.Type}}),",
                 "    #\"Invoked Custom Function\" = Table.AddColumn(#\"Changed Type\", \"MonthName\", each Meses([months])),",
                 "    #\"Expanded MonthName\" = Table.ExpandTableColumn(#\"Invoked Custom Function\", \"MonthName\", {\"MonthNum\"}, {\"MonthName.MonthNum\"}),",
                 "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Expanded MonthName\",{\"MonthName.MonthNum\", \"days\", \"year\", \"Index\", \"months\"}),",
@@ -19665,23 +19679,13 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
-          {
-            "name": "Index",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "lineageTag": "18471564-20ff-43b3-9395-9e8a458bee68",
-            "sourceColumn": "Index",
-            "summarizeBy": "sum"
-          },
           {
             "name": "days",
             "annotations": [
@@ -19735,6 +19739,20 @@
             "lineageTag": "8453ac0f-d028-4f9a-a01e-d8b6aec8bdd5",
             "sourceColumn": "year",
             "summarizeBy": "sum"
+          },
+          {
+            "name": "Index",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "9ed2b28d-8975-4720-bb51-9a3b1e95d585",
+            "sourceColumn": "Index",
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "5c17dd32-15dc-448f-aeec-60750709370a",
@@ -19747,7 +19765,8 @@
                 "let",
                 "    Source = Csv.Document(File.Contents(\"C:\\Users\\Eduardo Vargas\\OneDrive - Traxión\\Escritorio\\XB\\dias_festivos.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Index\", Int64.Type}, {\"days\", Int64.Type}, {\"months\", type text}, {\"description\", type text}, {\"year\", Int64.Type}})",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Promoted Headers\",{{\"\", \"Index\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"Index\", Int64.Type}, {\"days\", Int64.Type}, {\"months\", type text}, {\"description\", type text}, {\"year\", Int64.Type}})",
                 "in",
                 "    #\"Changed Type\""
               ],
