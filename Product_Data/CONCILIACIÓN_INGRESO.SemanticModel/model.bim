@@ -17,6 +17,10 @@
       {
         "name": "PBI_ProTooling",
         "value": "[\"DevMode\"]"
+      },
+      {
+        "name": "__TEdtr",
+        "value": "1"
       }
     ],
     "culture": "en-US",
@@ -5649,7 +5653,7 @@
             ]
           },
           {
-            "name": "CP_DOC_DATE",
+            "name": "CP_DOC_DATE1",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -5662,7 +5666,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "CB_DOC_DATE",
+            "name": "CB_DOC_DATE1",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -5675,7 +5679,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "CA_DOC_DATE",
+            "name": "CA_DOC_DATE1",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -5688,7 +5692,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "AB_POS_DOC_DATE",
+            "name": "AB_POS_DOC_DATE1",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -5701,7 +5705,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "AB_NEG_DOC_DATE",
+            "name": "AB_NEG_DOC_DATE1",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -5714,7 +5718,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "DF_DOC_DATE",
+            "name": "DF_DOC_DATE1",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -5727,7 +5731,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "FA_DOC_DATE",
+            "name": "FA_DOC_DATE1",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -5740,7 +5744,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "FS_POS_DOC_DATE",
+            "name": "FS_POS_DOC_DATE1",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -5753,7 +5757,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "FS_NEG_DOC_DATE",
+            "name": "FS_NEG_DOC_DATE1",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -5766,7 +5770,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "NC_DOC_DATE",
+            "name": "NC_DOC_DATE1",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -5779,7 +5783,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "ND_DOC_DATE",
+            "name": "ND_DOC_DATE1",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -5815,6 +5819,149 @@
             "isDataTypeInferred": true,
             "lineageTag": "cd7fbe69-508d-4792-8d30-7d10713cce19",
             "summarizeBy": "sum",
+            "type": "calculated"
+          },
+          {
+            "name": "CP_DOC_DATE",
+            "dataType": "string",
+            "expression": [
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[CP_DOC_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
+              "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
+              "            RETURN",
+              "            fact_1"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "54a6e3b2-5c04-4a7e-bb59-95679e49df9b",
+            "type": "calculated"
+          },
+          {
+            "name": "CB_DOC_DATE",
+            "dataType": "string",
+            "expression": [
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[CB_DOC_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
+              "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
+              "            RETURN",
+              "            fact_1"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "584ccbd0-19e7-423b-8a20-ae2471246d6f",
+            "type": "calculated"
+          },
+          {
+            "name": "CA_DOC_DATE",
+            "dataType": "string",
+            "expression": [
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[CA_DOC_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
+              "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
+              "            RETURN",
+              "            fact_1"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "7fdc889f-3135-4dea-b0bc-5c918f26ffa8",
+            "type": "calculated"
+          },
+          {
+            "name": "AB_POS_DOC_DATE",
+            "dataType": "string",
+            "expression": [
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[AB_POS_DOC_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
+              "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
+              "            RETURN",
+              "            fact_1"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "12365bec-cdfa-44d0-9201-ec7ace0ac78e",
+            "type": "calculated"
+          },
+          {
+            "name": "AB_NEG_DOC_DATE",
+            "dataType": "string",
+            "expression": [
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[AB_NEG_DOC_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
+              "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
+              "            RETURN",
+              "            fact_1"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "3b0734b4-fc03-4666-ad05-08d3992e5ad0",
+            "type": "calculated"
+          },
+          {
+            "name": "DF_DOC_DATE",
+            "dataType": "string",
+            "expression": [
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[DF_DOC_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
+              "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
+              "            RETURN",
+              "            fact_1"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "2a3d83a3-2a6c-485f-9ad4-087cd48d5013",
+            "type": "calculated"
+          },
+          {
+            "name": "FA_DOC_DATE",
+            "dataType": "string",
+            "expression": [
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[FA_DOC_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
+              "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
+              "            RETURN",
+              "            fact_1"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "9aacadc3-f47f-4818-bdc1-763ae46e6414",
+            "type": "calculated"
+          },
+          {
+            "name": "FS_POS_DOC_DATE",
+            "dataType": "string",
+            "expression": [
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[FS_POS_DOC_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
+              "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
+              "            RETURN",
+              "            fact_1"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "cab62c8c-2ae0-4fdb-9813-60f08778e859",
+            "type": "calculated"
+          },
+          {
+            "name": "FS_NEG_DOC_DATE",
+            "dataType": "string",
+            "expression": [
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[FS_NEG_DOC_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
+              "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
+              "            RETURN",
+              "            fact_1"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "29f32bc9-f403-4d38-8a2a-9d8e813225dd",
+            "type": "calculated"
+          },
+          {
+            "name": "NC_DOC_DATE",
+            "dataType": "string",
+            "expression": [
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[NC_DOC_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
+              "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
+              "            RETURN",
+              "            fact_1"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "0c1cd1c5-f7ea-4f10-a2a8-cf60757301d0",
+            "type": "calculated"
+          },
+          {
+            "name": "ND_DOC_DATE",
+            "dataType": "string",
+            "expression": [
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[ND_DOC_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
+              "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
+              "            RETURN",
+              "            fact_1"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "96977a4a-a386-4b41-bff2-5a1926bdf582",
             "type": "calculated"
           }
         ],
