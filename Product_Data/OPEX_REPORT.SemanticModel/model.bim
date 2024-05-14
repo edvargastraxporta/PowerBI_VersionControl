@@ -12,7 +12,7 @@
       },
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"tp_cambio_funct\",\"Meses\",\"F1\",\"F2\",\"DiasFestivos\",\"Tipo de cambio Diario\",\"Scorecard\",\"Fechas\",\"All_dates\",\"now_date\",\"2023\",\"2024\",\"Facturaciones\",\"Anulaciones\",\"facturaciones_saphana\",\"anulaciones_saphana\",\"facturaciones_saphana (2)\",\"facturaciones_saphana (3)\",\"facturaciones_saphana_lastupdate\",\"Medidas\",\"LastUpdate\",\"dias_festivos\"]"
+        "value": "[\"tp_cambio_funct\",\"Meses\",\"F1\",\"F2\",\"DiasFestivos\",\"Tipo de cambio Diario\",\"Scorecard\",\"Fechas\",\"All_dates\",\"now_date\",\"2023\",\"2024\",\"Facturaciones\",\"Anulaciones\",\"facturaciones_saphana\",\"anulaciones_saphana\",\"facturaciones_saphana (2)\",\"facturaciones_saphana (3)\",\"facturaciones_saphana_lastupdate\",\"Medidas\",\"LastUpdate\",\"dias_festivos\",\"Parameter1\",\"Transform Sample File\",\"Sample File\",\"Transform File\"]"
       },
       {
         "name": "PBI_ProTooling",
@@ -136,6 +136,81 @@
         "kind": "m",
         "lineageTag": "f613fd02-940b-4382-80d5-a040184244c1",
         "queryGroup": "ExchangeRate"
+      },
+      {
+        "name": "Parameter1",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Binary"
+          }
+        ],
+        "expression": "#\"Sample File\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Sample File\", Type=\"Binary\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "c6f594e9-0369-4765-bee3-d91b7d8bb662",
+        "queryGroup": "Bitacoras\\Facturaciones\\Transform File from Query1\\Helper Queries"
+      },
+      {
+        "name": "Transform Sample File",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = Excel.Workbook(Parameter1, null, true),",
+          "    #\"Relacion facturacion diaria_Sheet\" = Source{[Item=\"Relacion facturacion diaria\",Kind=\"Sheet\"]}[Data]",
+          "in",
+          "    #\"Relacion facturacion diaria_Sheet\""
+        ],
+        "kind": "m",
+        "lineageTag": "12b740b6-7dbd-4817-83c1-a5058cfc25bb",
+        "queryGroup": "Bitacoras\\Facturaciones\\Transform File from Query1"
+      },
+      {
+        "name": "Sample File",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Binary"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = SharePoint.Files(\"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics\", [ApiVersion = 15]),",
+          "    #\"Filtered Rows\" = Table.SelectRows(Source, each ([Folder Path] = \"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics/Documentos compartidos/Bitacoras OPEX/Facturación/\")),",
+          "    Navigation1 = #\"Filtered Rows\"{0}[Content]",
+          "in",
+          "    Navigation1"
+        ],
+        "kind": "m",
+        "lineageTag": "a3fd1ae9-fe95-4641-bf7e-f214a3935661",
+        "queryGroup": "Bitacoras\\Facturaciones\\Transform File from Query1\\Helper Queries"
+      },
+      {
+        "name": "Transform File",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Function"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = (Parameter1) => let",
+          "        Source = Excel.Workbook(Parameter1, null, true),",
+          "        #\"Relacion facturacion diaria_Sheet\" = Source{[Item=\"Relacion facturacion diaria\",Kind=\"Sheet\"]}[Data]",
+          "    in",
+          "        #\"Relacion facturacion diaria_Sheet\"",
+          "in",
+          "    Source"
+        ],
+        "kind": "m",
+        "lineageTag": "eb9187ce-3111-4576-86cf-3fe569d9ed3b",
+        "mAttributes": "[ FunctionQueryBinding = \"{\"\"exemplarFormulaName\"\":\"\"Transform Sample File\"\"}\" ]",
+        "queryGroup": "Bitacoras\\Facturaciones\\Transform File from Query1\\Helper Queries"
       }
     ],
     "queryGroups": [
@@ -169,6 +244,42 @@
           }
         ],
         "folder": "Bitacoras"
+      },
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "0"
+          }
+        ],
+        "folder": "Bitacoras\\Anulaciones"
+      },
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "1"
+          }
+        ],
+        "folder": "Bitacoras\\Facturaciones"
+      },
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "0"
+          }
+        ],
+        "folder": "Bitacoras\\Facturaciones\\Transform File from Query1"
+      },
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "0"
+          }
+        ],
+        "folder": "Bitacoras\\Facturaciones\\Transform File from Query1\\Helper Queries"
       }
     ],
     "relationships": [
@@ -913,10 +1024,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -1561,6 +1668,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -3567,9 +3678,13 @@
                 "value": "{\"isGeneralNumber\":true}"
               }
             ],
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
             "dataType": "double",
             "expression": "LOOKUPVALUE(Facturaciones[Importe sin IVA],Facturaciones[Shipments],Scorecard[ShipmentID])",
-            "isDataTypeInferred": true,
             "lineageTag": "7c8ac8d9-7678-466e-a46f-04f17e51f9fe",
             "summarizeBy": "sum",
             "type": "calculated"
@@ -10665,6 +10780,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -10868,12 +10987,15 @@
           {
             "name": "2023",
             "mode": "import",
-            "queryGroup": "Bitacoras",
+            "queryGroup": "Bitacoras\\Anulaciones",
             "source": {
               "expression": [
                 "let",
-                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\Eduardo Vargas\\Downloads\\Control de Anulaciones de Provisiones 2023-2024.xlsx\"), null, true),",
-                "    #\"2023_Sheet\" = Source{[Item=\"2023\",Kind=\"Sheet\"]}[Data],",
+                "    Source = SharePoint.Files(\"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics\", [ApiVersion = 15]),",
+                "    #\"Filtered Rows\" = Table.SelectRows(Source, each ([Folder Path] = \"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics/Documentos compartidos/Bitacoras OPEX/Anulaciones/\")),",
+                "    #\"Control de Anulaciones de Provisiones xlsx_https://ftmexico sharepoint com/sites/TXPDataAnalytics/Documentos compartidos/Bitacoras OPEX/Anulaciones/\" = #\"Filtered Rows\"{[Name=\"Control de Anulaciones de Provisiones.xlsx\",#\"Folder Path\"=\"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics/Documentos compartidos/Bitacoras OPEX/Anulaciones/\"]}[Content],",
+                "    #\"Imported Excel Workbook\" = Excel.Workbook(#\"Control de Anulaciones de Provisiones xlsx_https://ftmexico sharepoint com/sites/TXPDataAnalytics/Documentos compartidos/Bitacoras OPEX/Anulaciones/\"),",
+                "    #\"2023_Sheet\" = #\"Imported Excel Workbook\"{[Item=\"2023\",Kind=\"Sheet\"]}[Data],",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"2023_Sheet\", [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Cliente\", type text}, {\"Shipment\", type text}, {\"Provisión\", Int64.Type}, {\"Fecha de documento\", type date}, {\"Fecha anulación\", type date}, {\"Importe\", type number}, {\"Solicita\", type text}, {\"Motivo\", type text}, {\"Nuevo SH\", type text}, {\"Folio anulacion\", Int64.Type}, {\"Comentarios\", type text}, {\"Confirmación\", type any}})",
                 "in",
@@ -11292,6 +11414,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -11467,12 +11593,15 @@
           {
             "name": "2024",
             "mode": "import",
-            "queryGroup": "Bitacoras",
+            "queryGroup": "Bitacoras\\Anulaciones",
             "source": {
               "expression": [
                 "let",
-                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\Eduardo Vargas\\Downloads\\Control de Anulaciones de Provisiones 2023-2024.xlsx\"), null, true),",
-                "    #\"2024_Sheet\" = Source{[Item=\"2024\",Kind=\"Sheet\"]}[Data],",
+                "    Source = SharePoint.Files(\"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics\", [ApiVersion = 15]),",
+                "    #\"Filtered Rows\" = Table.SelectRows(Source, each ([Folder Path] = \"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics/Documentos compartidos/Bitacoras OPEX/Anulaciones/\")),",
+                "    #\"Control de Anulaciones de Provisiones xlsx_https://ftmexico sharepoint com/sites/TXPDataAnalytics/Documentos compartidos/Bitacoras OPEX/Anulaciones/\" = #\"Filtered Rows\"{[Name=\"Control de Anulaciones de Provisiones.xlsx\",#\"Folder Path\"=\"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics/Documentos compartidos/Bitacoras OPEX/Anulaciones/\"]}[Content],",
+                "    #\"Imported Excel Workbook\" = Excel.Workbook(#\"Control de Anulaciones de Provisiones xlsx_https://ftmexico sharepoint com/sites/TXPDataAnalytics/Documentos compartidos/Bitacoras OPEX/Anulaciones/\"),",
+                "    #\"2024_Sheet\" = #\"Imported Excel Workbook\"{[Item=\"2024\",Kind=\"Sheet\"]}[Data],",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"2024_Sheet\", [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Cliente\", type text}, {\"Shipment\", type text}, {\"Provisión\", type any}, {\"Fecha de documento\", type date}, {\"Fecha anulación\", type date}, {\"Importe\", type number}, {\"Solicita\", type text}, {\"Motivo\", type text}, {\"Nuevo SH\", type text}, {\"Folio anulación\", type any}})",
                 "in",
@@ -11891,6 +12020,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -11944,11 +12077,10 @@
                 "value": "Automatic"
               }
             ],
-            "dataType": "int64",
-            "formatString": "0",
+            "dataType": "string",
             "lineageTag": "33b1e016-e5bb-470e-b1d1-5b33240615b2",
             "sourceColumn": "OV",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           },
           {
             "name": "Shipments",
@@ -12024,16 +12156,12 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
               }
             ],
-            "dataType": "double",
+            "dataType": "string",
             "lineageTag": "28f06e44-3123-4fe4-9344-969bf3272fce",
             "sourceColumn": "Importe sin IVA",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           },
           {
             "name": "Moneda",
@@ -12147,11 +12275,10 @@
                 "value": "Automatic"
               }
             ],
-            "dataType": "int64",
-            "formatString": "0",
+            "dataType": "string",
             "lineageTag": "21896ba4-daa1-4a4f-95d1-cf4a6ab87c8f",
             "sourceColumn": "Portal",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           },
           {
             "name": "Factura_1",
@@ -12177,19 +12304,6 @@
             "dataType": "string",
             "lineageTag": "1994782a-05c2-428b-8a71-f6fcbfc8e3e3",
             "sourceColumn": "x",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "Column20",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "0cba9596-0ddc-4af4-9382-e7062681b9b6",
-            "sourceColumn": "Column20",
             "summarizeBy": "none"
           },
           {
@@ -12250,6 +12364,32 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "353face3-e958-49ed-bb9b-29f5235e1329",
+            "sourceColumn": "Column25",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Bitacora de facturacion diaria FEBRERO 2024 (FACTURACION).xlsx",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "44713bad-f427-4b01-afc1-e554640a9a85",
+            "sourceColumn": "Bitacora de facturacion diaria FEBRERO 2024 (FACTURACION).xlsx",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Column26",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
               },
               {
                 "name": "PBI_FormatHint",
@@ -12257,8 +12397,8 @@
               }
             ],
             "dataType": "double",
-            "lineageTag": "353face3-e958-49ed-bb9b-29f5235e1329",
-            "sourceColumn": "Column25",
+            "lineageTag": "00fbafdd-93bc-492e-bf6a-d8a7b1e93b17",
+            "sourceColumn": "Column26",
             "summarizeBy": "sum"
           }
         ],
@@ -12267,17 +12407,23 @@
           {
             "name": "Facturaciones",
             "mode": "import",
-            "queryGroup": "Bitacoras",
+            "queryGroup": "Bitacoras\\Facturaciones",
             "source": {
               "expression": [
                 "let",
-                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\Eduardo Vargas\\Downloads\\Bitacora de facturacion diaria FEBRERO 2024 (FACTURACION).xlsx\"), null, true),",
-                "    #\"Relacion facturacion diaria_Sheet\" = Source{[Item=\"Relacion facturacion diaria\",Kind=\"Sheet\"]}[Data],",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Relacion facturacion diaria_Sheet\",{{\"Column1\", type any}, {\"Column2\", type any}, {\"Column3\", type any}, {\"Column4\", type text}, {\"Column5\", type text}, {\"Column6\", type any}, {\"Column7\", type any}, {\"Column8\", type any}, {\"Column9\", type text}, {\"Column10\", type text}, {\"Column11\", type text}, {\"Column12\", type text}, {\"Column13\", type text}, {\"Column14\", type text}, {\"Column15\", type any}, {\"Column16\", type text}, {\"Column17\", type any}, {\"Column18\", type text}, {\"Column19\", type text}, {\"Column20\", type any}, {\"Column21\", type any}, {\"Column22\", type text}, {\"Column23\", type any}, {\"Column24\", type any}, {\"Column25\", type number}}),",
+                "    Source = SharePoint.Files(\"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics\", [ApiVersion = 15]),",
+                "    #\"Filtered Rows\" = Table.SelectRows(Source, each ([Folder Path] = \"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics/Documentos compartidos/Bitacoras OPEX/Facturación/\")),",
+                "    #\"Filtered Hidden Files1\" = Table.SelectRows(#\"Filtered Rows\", each [Attributes]?[Hidden]? <> true),",
+                "    #\"Invoke Custom Function1\" = Table.AddColumn(#\"Filtered Hidden Files1\", \"Transform File\", each #\"Transform File\"([Content])),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Invoke Custom Function1\", {\"Name\", \"Source.Name\"}),",
+                "    #\"Removed Other Columns1\" = Table.SelectColumns(#\"Renamed Columns1\", {\"Source.Name\", \"Transform File\"}),",
+                "    #\"Expanded Table Column1\" = Table.ExpandTableColumn(#\"Removed Other Columns1\", \"Transform File\", Table.ColumnNames(#\"Transform File\"(#\"Sample File\"))),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Expanded Table Column1\",{{\"Column1\", type any}, {\"Column2\", type any}, {\"Column3\", type any}, {\"Column4\", type text}, {\"Column5\", type text}, {\"Column6\", type any}, {\"Column7\", type any}, {\"Column8\", type any}, {\"Column9\", type text}, {\"Column10\", type text}, {\"Column11\", type text}, {\"Column12\", type text}, {\"Column13\", type text}, {\"Column14\", type text}, {\"Column15\", type any}, {\"Column16\", type text}, {\"Column17\", type any}, {\"Column18\", type text}, {\"Column19\", type text}, {\"Column20\", type any}, {\"Column21\", type any}, {\"Column22\", type text}, {\"Column23\", type any}, {\"Column24\", type any}, {\"Column25\", type number}}),",
                 "    #\"Removed Top Rows\" = Table.Skip(#\"Changed Type\",1),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Removed Top Rows\", [PromoteAllScalars=true]),",
-                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Fecha OV\", type date}, {\"Solic.   \", type any}, {\"OV\", Int64.Type}, {\"Shipments\", type text}, {\"Cliente\", type text}, {\"Factura\", type text}, {\"Fecha Factura\", type date}, {\"Importe sin IVA\", type number}, {\"Moneda\", type text}, {\"Refacturado\", type text}, {\"Analista\", type text}, {\"Estatus portal\", type text}, {\"Fecha creación SH\", type text}, {\"Días LAB\", type text}, {\"Bracket\", type any}, {\"Semana\", type text}, {\"Portal\", Int64.Type}, {\"Factura_1\", type text}, {\"x\", type text}, {\"Column20\", type any}, {\"Column21\", type any}, {\"Column22\", type text}, {\"Column23\", type any}, {\"Column24\", type any}, {\"Column25\", type number}}),",
-                "    #\"Removed Duplicates\" = Table.Distinct(#\"Changed Type1\", {\"Shipments\"}),",
+                "    #\"Filtered Rows1\" = Table.SelectRows(#\"Promoted Headers\", each ([Fecha OV] <> \"Fecha OV\")),",
+                "    #\"Changed Type2\" = Table.TransformColumnTypes(#\"Filtered Rows1\",{{\"Fecha OV\", type date}, {\"Fecha Factura\", type date}}),",
+                "    #\"Removed Duplicates\" = Table.Distinct(#\"Changed Type2\", {\"Shipments\"}),",
                 "    #\"Replaced Value\" = Table.ReplaceValue(#\"Removed Duplicates\",\" \",\"\",Replacer.ReplaceText,{\"Shipments\"}),",
                 "    #\"Sorted Rows\" = Table.Sort(#\"Replaced Value\",{{\"Shipments\", Order.Descending}})",
                 "in",
@@ -12696,6 +12842,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -12911,7 +13061,7 @@
           {
             "name": "Anulaciones",
             "mode": "import",
-            "queryGroup": "Bitacoras",
+            "queryGroup": "Bitacoras\\Anulaciones",
             "source": {
               "expression": [
                 "let",
@@ -19679,10 +19829,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
