@@ -496,24 +496,6 @@
         "fromTable": "metabase_load_delivereddate",
         "toColumn": "Column1",
         "toTable": "metabase_load_events"
-      },
-      {
-        "name": "AutoDetected_b702eea2-9c34-43c5-974d-2b61122b75ba",
-        "crossFilteringBehavior": "bothDirections",
-        "fromCardinality": "one",
-        "fromColumn": "Index",
-        "fromTable": "TXP_PULSE",
-        "toColumn": "Index",
-        "toTable": "Total Events"
-      },
-      {
-        "name": "AutoDetected_d645bc01-e1cf-4056-9629-03695d65d19e",
-        "crossFilteringBehavior": "bothDirections",
-        "fromCardinality": "one",
-        "fromColumn": "Index",
-        "fromTable": "TXP_PULSE",
-        "toColumn": "Index",
-        "toTable": "Events"
       }
     ],
     "sourceQueryCulture": "en-US",
@@ -932,13 +914,8 @@
           },
           {
             "name": "PSA_UTOPS",
-            "annotations": [
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ],
             "expression": "CALCULATE(AVERAGE(Scorecard[%UTOPSNAL]),OFFSET(-1,,ORDERBY(Calendario[RankAnio-Semana])),ALLEXCEPT(Calendario,Calendario[RankAnio-Semana],Calendario[MonthName],Calendario[Year]))",
+            "formatString": "0.00%;-0.00%;0.00%",
             "lineageTag": "6cce9892-84fb-4e8f-833e-9aa2d089d915"
           },
           {
@@ -7867,7 +7844,7 @@
             "formatString": "0",
             "lineageTag": "22581a59-aac2-4300-9fcc-8a87d9bae79f",
             "sourceColumn": "Index",
-            "summarizeBy": "none"
+            "summarizeBy": "sum"
           }
         ],
         "lineageTag": "0da5ea4d-6938-46f2-9931-f9103874ffb0",
@@ -7929,7 +7906,7 @@
             "formatString": "0",
             "lineageTag": "05033ff6-6bb5-475d-9ff5-99cd4842ce8e",
             "sourceColumn": "Index",
-            "summarizeBy": "none"
+            "summarizeBy": "sum"
           }
         ],
         "lineageTag": "1f659530-5835-46ae-8306-0910aa8478f1",
@@ -10469,7 +10446,7 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Table"
+            "value": "Exception"
           }
         ],
         "columns": [
@@ -15358,7 +15335,7 @@
             "formatString": "0",
             "lineageTag": "23b18b30-f854-429d-a9be-3eb67f0a6184",
             "sourceColumn": "Index",
-            "summarizeBy": "none"
+            "summarizeBy": "sum"
           }
         ],
         "lineageTag": "6af1e3e3-c119-4825-8a04-ef151ddd0182",
