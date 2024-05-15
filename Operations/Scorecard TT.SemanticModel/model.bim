@@ -24751,6 +24751,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Exception"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -27467,7 +27471,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Origen = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, CommandTimeout=#duration(0, 0, 30, 0)]),",
+                "    Origen = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, CommandTimeout=#duration(0, 1, 30, 0)]),",
                 "    testtxlintegra_ScoreCard_reports_v3 = Origen{[Schema=\"prodtxlintegra\",Item=\"ScoreCard_reports_v3\"]}[Data],",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(testtxlintegra_ScoreCard_reports_v3,{{\"LoadID\", type text}}),",
                 "    LoadsEliminado132879 = Table.SelectRows(#\"Changed Type\", each [LoadID] <> \"132879\"),",
