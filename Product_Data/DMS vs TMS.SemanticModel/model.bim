@@ -718,6 +718,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -1080,6 +1084,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -2464,7 +2472,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true]),",
+                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, CommandTimeout=#duration(0, 1, 30, 0)]),",
                 "    prodtxlintegra_ScoreCard_reports_v3 = Source{[Schema=\"prodtxlintegra\",Item=\"ScoreCard_reports_v3\"]}[Data],",
                 "    #\"Removed Columns\" = Table.RemoveColumns(prodtxlintegra_ScoreCard_reports_v3,{\"OTD\", \"TRCTR_LIC_NUM\", \"TRLR_LIC_NUM\", \"AdditionalChargeRating\", \"AdditionalCharge\", \"AdditionalChargeLoad\", \"Freightsales\", \"AccesorialsSales\", \"FreightCost\", \"AccesorialsCost\", \"VN\", \"oVN\", \"CB\", \"CBOk\", \"CBNegocio\", \"csr\", \"ElapsedHours\", \"TotalOnDutyHours\", \"TotalOffDutyHours\", \"TotalDistance\", \"vchrIDShpm\", \"vchrShpmCrtdUsr\", \"vchrShpmCrtdDtt\", \"vchrIDLoad\", \"vchrLoadCrtdUsr\", \"vchrLoadCrtdDtt\", \"origAddr\", \"destAddr\", \"Tipo\", \"ldCitaOrigen\", \"ldCitaDestino\", \"OriginLocationName\", \"OTS\", \"DestinationLocationName\"}),",
                 "    #\"Replaced Value\" = Table.ReplaceValue(#\"Removed Columns\",\"Mars_OW_XB\",\"Mars_XB\",Replacer.ReplaceText,{\"ProjectName\"}),",
@@ -7083,6 +7091,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -7671,7 +7683,11 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Table"
+            "value": "Exception"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -7782,7 +7798,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true]),",
+                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, CommandTimeout=#duration(0, 2, 0, 0)]),",
                 "    prodtxlintegra_event_history = Source{[Schema=\"prodtxlintegra\",Item=\"event_history\"]}[Data],",
                 "    #\"Sorted Rows\" = Table.Sort(prodtxlintegra_event_history,{{\"sysDtt\", Order.Descending}}),",
                 "    #\"Removed Columns\" = Table.RemoveColumns(#\"Sorted Rows\",{\"sysDtt\", \"rprtDtt\", \"shpmId\", \"crtdBy\", \"tripId\", \"carrId\", \"notes\"}),",
@@ -8578,6 +8594,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -8642,7 +8662,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true]),",
+                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, CommandTimeout=#duration(0, 2, 0, 0)]),",
                 "    prodtxlintegra_event_history = Source{[Schema=\"prodtxlintegra\",Item=\"event_history\"]}[Data],",
                 "    #\"Sorted Rows\" = Table.Sort(prodtxlintegra_event_history,{{\"sysDtt\", Order.Descending}}),",
                 "    #\"Removed Columns\" = Table.RemoveColumns(#\"Sorted Rows\",{\"rprtDtt\", \"shpmId\", \"crtdBy\", \"tripId\", \"carrId\", \"notes\"}),",
@@ -8663,7 +8683,11 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Table"
+            "value": "Exception"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -8774,7 +8798,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true]),",
+                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, CommandTimeout=#duration(0, 2, 0, 0)]),",
                 "    prodtxlintegra_event_history = Source{[Schema=\"prodtxlintegra\",Item=\"event_history\"]}[Data],",
                 "    #\"Sorted Rows\" = Table.Sort(prodtxlintegra_event_history,{{\"sysDtt\", Order.Descending}}),",
                 "    #\"Removed Columns\" = Table.RemoveColumns(#\"Sorted Rows\",{\"sysDtt\", \"rprtDtt\", \"shpmId\", \"crtdBy\", \"tripId\", \"carrId\", \"notes\"}),",
@@ -8797,7 +8821,11 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Table"
+            "value": "Exception"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -10446,7 +10474,7 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Exception"
+            "value": "Table"
           }
         ],
         "columns": [
