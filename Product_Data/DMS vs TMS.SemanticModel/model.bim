@@ -718,10 +718,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -1015,25 +1011,25 @@
           },
           {
             "name": "PEND_EXCEL",
-            "expression": "CALCULATE(DISTINCTCOUNT(Matrix_Metabase[load_id]), Matrix_Metabase[excel_cp]=0)",
+            "expression": "CALCULATE(DISTINCTCOUNT(Scorecard[LoadID]), Matrix_Metabase[excel_cp]=0, NOT ISBLANK(Scorecard[%UTTXP]))",
             "formatString": "0",
             "lineageTag": "1bc9aa28-0ae9-4c22-abb3-03eec04a8c5b"
           },
           {
             "name": "PEND_CP",
-            "expression": "CALCULATE(DISTINCTCOUNT(Matrix_Metabase[load_id]), Matrix_Metabase[correct_cp]=0)",
+            "expression": "CALCULATE(DISTINCTCOUNT(Matrix_Metabase[load_id]), Matrix_Metabase[correct_cp]=0, NOT ISBLANK(Scorecard[%UTTXP]))",
             "formatString": "0",
             "lineageTag": "043adec2-aa32-413f-90db-884ac64fbfa4"
           },
           {
             "name": "PEND_ASSET",
-            "expression": "CALCULATE(DISTINCTCOUNT(Matrix_Metabase[load_id]), Matrix_Metabase[asset]=0)",
+            "expression": "CALCULATE(DISTINCTCOUNT(Matrix_Metabase[load_id]), Matrix_Metabase[asset]=0, NOT ISBLANK(Scorecard[%UTTXP]))",
             "formatString": "0",
             "lineageTag": "980f14d3-22b6-4028-bcdc-3baefdcc8336"
           },
           {
             "name": "PEND_SCP",
-            "expression": "CALCULATE(DISTINCTCOUNT(Matrix_Metabase[load_id]), Matrix_Metabase[support_cp]=0)",
+            "expression": "CALCULATE(DISTINCTCOUNT(Matrix_Metabase[load_id]), Matrix_Metabase[support_cp]=0, NOT ISBLANK(Scorecard[%UTTXP]))",
             "formatString": "0",
             "lineageTag": "020e9265-0f6b-4c8b-b5e7-ccbcf2b76e23"
           },
@@ -1084,10 +1080,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -7091,10 +7083,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -7684,10 +7672,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Exception"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -8594,10 +8578,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -8684,10 +8664,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Exception"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -8822,10 +8798,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Exception"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -10474,7 +10446,7 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Table"
+            "value": "Exception"
           }
         ],
         "columns": [
