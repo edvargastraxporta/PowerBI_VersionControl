@@ -4,7 +4,7 @@
     "annotations": [
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Scorecard\",\"Fechas\",\"Clientes\",\"Documentos\",\"Logos\",\"Logos (2)\",\"imageconverter\",\"Clientes (2)\",\"OrigenModelo\",\"DestinoModelo\",\"Estado\",\"Medidas\",\"Seccion\",\"Sector\",\"Destinos_ID\",\"OriginIDNoRegistrado\",\"Rutas\",\"DestinationIDNoRegistrado\",\"Origenes_ID\",\"Shipping Location (lat_lon)\",\"ShipingLocationCountries\",\"Ubicación\",\"Tipo de cambio Diario\",\"Tipo de cambio_Completo\",\"ubicaciones_mex\",\"ubicaciones_usa\",\"TMSARISE\",\"ABMEX\",\"ABUSA\",\"ABCANADA\"]"
+        "value": "[\"Scorecard\",\"Fechas\",\"Clientes\",\"Documentos\",\"Logos\",\"Logos (2)\",\"imageconverter\",\"Clientes (2)\",\"OrigenModelo\",\"DestinoModelo\",\"Estado\",\"Medidas\",\"Seccion\",\"Sector\",\"Destinos_ID\",\"OriginIDNoRegistrado\",\"Rutas\",\"DestinationIDNoRegistrado\",\"Origenes_ID\",\"Shipping Location (lat_lon)\",\"ShipingLocationCountries\",\"Ubicación\",\"Tipo de cambio Diario\",\"Tipo de cambio_Completo\",\"ubicaciones_mex\",\"ubicaciones_usa\",\"TMSARISE\",\"ABMEX\",\"ABUSA\",\"ABCANADA\",\"AB NEW\"]"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -420,38 +420,6 @@
         "toTable": "Calendario"
       },
       {
-        "name": "9a3fa5d3-f91f-4884-891a-b485c5108e55",
-        "fromColumn": "FechadeOrigen",
-        "fromTable": "Scorecard",
-        "joinOnDateBehavior": "datePartOnly",
-        "toColumn": "Date",
-        "toTable": "LocalDateTable_8aaf40a7-8b43-41e2-ad5d-aa22bdadec95"
-      },
-      {
-        "name": "7c05b09d-3762-4e5a-8edc-b4814b4bc56c",
-        "fromColumn": "FechaDestino",
-        "fromTable": "Scorecard",
-        "joinOnDateBehavior": "datePartOnly",
-        "toColumn": "Date",
-        "toTable": "LocalDateTable_db98b16b-82e5-4afc-a911-bf3eb3909928"
-      },
-      {
-        "name": "d0c164d9-1871-44b1-bc6c-8a158279e042",
-        "fromColumn": "FechadeOrigen_2",
-        "fromTable": "Scorecard",
-        "joinOnDateBehavior": "datePartOnly",
-        "toColumn": "Date",
-        "toTable": "LocalDateTable_a15e4ed9-a400-426d-a853-71acb467469c"
-      },
-      {
-        "name": "a8ae5263-2144-476b-9cfc-a970e025c1d9",
-        "fromColumn": "FechaDestino_2",
-        "fromTable": "Scorecard",
-        "joinOnDateBehavior": "datePartOnly",
-        "toColumn": "Date",
-        "toTable": "LocalDateTable_fe62791b-9df0-420b-8abc-3e248e408125"
-      },
-      {
         "name": "7fe98976-3699-4d4d-8785-e3bdf724c6da",
         "crossFilteringBehavior": "bothDirections",
         "fromCardinality": "one",
@@ -483,6 +451,13 @@
         "joinOnDateBehavior": "datePartOnly",
         "toColumn": "Date",
         "toTable": "LocalDateTable_20ff45fa-c403-4376-b748-d024ed4e31b2"
+      },
+      {
+        "name": "AutoDetected_e32ca846-fb27-4f9e-8611-16742d11b60f",
+        "fromColumn": "Abb",
+        "fromTable": "AB NEW",
+        "toColumn": "Abb",
+        "toTable": "ABMEX"
       }
     ],
     "sourceQueryCulture": "en-US",
@@ -2395,7 +2370,7 @@
               }
             ],
             "dataType": "string",
-            "expression": "IF(Scorecard[Viajes mastro]=1 && Scorecard[Sector]=\"XB\" && NOT(Scorecard[ProjectName] in {\"Agrizar_XB\",\"Mastronardi_XB\",\"Semillas_XB\"}),Scorecard[ID_Multileg_Origen],\"\")",
+            "expression": "IF(NOT ISBLANK(Scorecard[FechadeOrigen_2]) && Scorecard[Sector]=\"XB\" && NOT(Scorecard[ProjectName] in {\"Agrizar_XB\",\"Mastronardi_XB\",\"Semillas_XB\"}),Scorecard[ID_Multileg_Origen],\"\")",
             "isDataTypeInferred": true,
             "lineageTag": "9f0f2af9-2f89-466b-87f7-d28b31330ef2",
             "summarizeBy": "none",
@@ -2444,7 +2419,7 @@
             ],
             "dataType": "string",
             "expression": [
-              "IF(Scorecard[Viajes mastro 2]=1 && Scorecard[Sector]=\"XB\" && NOT(Scorecard[ProjectName] in {\"Agrizar_XB\",\"Mastronardi_XB\",\"Semillas_XB\"}),Scorecard[ID_Multileg_Destino],\"\")",
+              "IF(NOT ISBLANK(Scorecard[FechaDestino_2]) && Scorecard[Sector]=\"XB\" && NOT(Scorecard[ProjectName] in {\"Agrizar_XB\",\"Mastronardi_XB\",\"Semillas_XB\"}),Scorecard[ID_Multileg_Destino],\"\")",
               "                        "
             ],
             "isDataTypeInferred": true,
@@ -2488,19 +2463,23 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
               }
             ],
-            "dataType": "dateTime",
+            "dataType": "double",
             "expression": [
               "",
               "//CÁLCULO DE VIAJES MULTILEG PARA OTA CORRECTO",
               "                 var a0= MaxX(FILTER(Scorecard,Scorecard[ShipmentID]=EARLIER(Scorecard[ShipmentID])),Scorecard[DriverCheckInOrigin])",
-              "                 var a01= RANKX(FILTER(Scorecard,Scorecard[Shipmentid]=EARLIER(Scorecard[Shipmentid])),Scorecard[DriverCheckInOrigin],,ASC)",
+              "                 var a01= RANKX(FILTER(Scorecard,Scorecard[Shipmentid]=EARLIER(Scorecard[Shipmentid])),Scorecard[LoadID],,ASC)",
               "                 var a02=IF(a01=1,a0,BLANK())",
               "",
               "//CÁLCULO DE VIAJES AGRIZAR PARA OTA CORRECTO",
               "                 var c0= MAXX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[oVN])",
-              "                 var c01= RANKX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[oVN],,ASC)",
+              "                 var c01= RANKX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[scoreCardId],,ASC)",
               "                 var c03=IF(c01=1,1,BLANK())",
               " // CÁLCULO DE VIAJES MASTRONARDI PARA OTA CORRECTO               ",
               "          var c1=MAXX(FILTER(Scorecard,Scorecard[tracking mastro]=EARLIER(Scorecard[tracking mastro])),Scorecard[LoadID])",
@@ -2508,24 +2487,12 @@
               "          var c3=IF(c2=1,1,BLANK())",
               "          var c4 = IF(Scorecard[ProjectName]=\"Mastronardi_XB\" || Scorecard[ProjectName]=\"Semillas_XB\",c3,IF(Scorecard[ProjectName]=\"Agrizar_XB\",c03,a02))",
               "           return",
-              "          a02"
+              "          c4"
             ],
-            "formatString": "General Date",
             "isDataTypeInferred": true,
             "lineageTag": "d0ff9bdf-9fa0-46dd-bd2a-5398825b133c",
-            "summarizeBy": "none",
-            "type": "calculated",
-            "variations": [
-              {
-                "name": "Variation",
-                "defaultHierarchy": {
-                  "hierarchy": "Jerarquía de fechas",
-                  "table": "LocalDateTable_8aaf40a7-8b43-41e2-ad5d-aa22bdadec95"
-                },
-                "isDefault": true,
-                "relationship": "9a3fa5d3-f91f-4884-891a-b485c5108e55"
-              }
-            ]
+            "summarizeBy": "sum",
+            "type": "calculated"
           },
           {
             "name": "FechaDestino",
@@ -2533,18 +2500,22 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
               }
             ],
-            "dataType": "dateTime",
+            "dataType": "double",
             "expression": [
               "",
               "//CÁLCULO DE VIAJES MULTILEG PARA OTD CORRECTO",
               "                 var a0= MAXX(FILTER(Scorecard,Scorecard[ShipmentID]=EARLIER(Scorecard[ShipmentID])),Scorecard[DriverCheckinOrigin])",
-              "                 var a01= RANKX(FILTER(Scorecard,Scorecard[Shipmentid]=EARLIER(Scorecard[Shipmentid])),Scorecard[DriverCheckinOrigin],,DESC)",
+              "                 var a01= RANKX(FILTER(Scorecard,Scorecard[Shipmentid]=EARLIER(Scorecard[Shipmentid])),Scorecard[LoadID],,DESC)",
               "                 var a02=IF(a01=1,a0,BLANK())",
               "//CÁLCULO DE VIAJES AGRIZAR PARA OTD CORRECTO",
               "                 var c0= MAXX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[oVN])",
-              "                 var c01= RANKX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[oVN],,DESC)",
+              "                 var c01= RANKX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[scoreCardId],,DESC)",
               "                 var c03=IF(c01=1,1,BLANK())",
               "//CÁLCULO DE VIAJES MASTRONARDI PARA OTD CORRECTO                 ",
               "          var c1=MAXX(FILTER(Scorecard,Scorecard[tracking mastro]=EARLIER(Scorecard[tracking mastro])),Scorecard[LoadID])",
@@ -2552,24 +2523,12 @@
               "          var c3=IF(c2=1,1,BLANK())",
               "          var c4 = IF(Scorecard[ProjectName]=\"Mastronardi_XB\" || Scorecard[ProjectName]=\"Semillas_XB\",c3,IF(Scorecard[ProjectName]=\"Agrizar_XB\",c03,a02))",
               "           return",
-              "          a02"
+              "          c4"
             ],
-            "formatString": "General Date",
             "isDataTypeInferred": true,
             "lineageTag": "3895a6d0-bca0-4652-bfbb-1e1a82d74f29",
-            "summarizeBy": "none",
-            "type": "calculated",
-            "variations": [
-              {
-                "name": "Variation",
-                "defaultHierarchy": {
-                  "hierarchy": "Jerarquía de fechas",
-                  "table": "LocalDateTable_db98b16b-82e5-4afc-a911-bf3eb3909928"
-                },
-                "isDefault": true,
-                "relationship": "7c05b09d-3762-4e5a-8edc-b4814b4bc56c"
-              }
-            ]
+            "summarizeBy": "sum",
+            "type": "calculated"
           },
           {
             "name": "FechadeOrigen_2",
@@ -2577,19 +2536,23 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
               }
             ],
-            "dataType": "dateTime",
+            "dataType": "double",
             "expression": [
               "",
               "//CÁLCULO DE VIAJES MULTILEG PARA OTA CORRECTO",
               "                 var a0= MaxX(FILTER(Scorecard,Scorecard[ShipmentID]=EARLIER(Scorecard[ShipmentID])),Scorecard[ActualDeliveryArrivalDateTimeDriverCheckin])",
-              "                 var a01= RANKX(FILTER(Scorecard,Scorecard[Shipmentid]=EARLIER(Scorecard[Shipmentid])),Scorecard[ActualDeliveryArrivalDateTimeDriverCheckin],,ASC)",
+              "                 var a01= RANKX(FILTER(Scorecard,Scorecard[Shipmentid]=EARLIER(Scorecard[Shipmentid])),Scorecard[LoadID],,ASC)",
               "                 var a02=IF(a01=1,a0,BLANK())",
               "",
               "//CÁLCULO DE VIAJES AGRIZAR PARA OTA CORRECTO",
               "                 var c0= MAXX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[oVN])",
-              "                 var c01= RANKX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[oVN],,ASC)",
+              "                 var c01= RANKX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[scoreCardId],,ASC)",
               "                 var c03=IF(c01=1,1,BLANK())",
               " // CÁLCULO DE VIAJES MASTRONARDI PARA OTA CORRECTO               ",
               "          var c1=MAXX(FILTER(Scorecard,Scorecard[tracking mastro]=EARLIER(Scorecard[tracking mastro])),Scorecard[LoadID])",
@@ -2597,24 +2560,12 @@
               "          var c3=IF(c2=1,1,BLANK())",
               "          var c4 = IF(Scorecard[ProjectName]=\"Mastronardi_XB\" || Scorecard[ProjectName]=\"Semillas_XB\",c3,IF(Scorecard[ProjectName]=\"Agrizar_XB\",c03,a02))",
               "           return",
-              "          a02"
+              "          c4"
             ],
-            "formatString": "General Date",
             "isDataTypeInferred": true,
             "lineageTag": "e63feaf1-6dca-4a43-a59e-23013bca00a3",
-            "summarizeBy": "none",
-            "type": "calculated",
-            "variations": [
-              {
-                "name": "Variation",
-                "defaultHierarchy": {
-                  "hierarchy": "Jerarquía de fechas",
-                  "table": "LocalDateTable_a15e4ed9-a400-426d-a853-71acb467469c"
-                },
-                "isDefault": true,
-                "relationship": "d0c164d9-1871-44b1-bc6c-8a158279e042"
-              }
-            ]
+            "summarizeBy": "sum",
+            "type": "calculated"
           },
           {
             "name": "FechaDestino_2",
@@ -2622,18 +2573,22 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
               }
             ],
-            "dataType": "dateTime",
+            "dataType": "double",
             "expression": [
               "",
               "//CÁLCULO DE VIAJES MULTILEG PARA OTD CORRECTO",
               "                 var a0= MAXX(FILTER(Scorecard,Scorecard[ShipmentID]=EARLIER(Scorecard[ShipmentID])),Scorecard[ActualDeliveryArrivalDateTimeDriverCheckin])",
-              "                 var a01= RANKX(FILTER(Scorecard,Scorecard[Shipmentid]=EARLIER(Scorecard[Shipmentid])),Scorecard[ActualDeliveryArrivalDateTimeDriverCheckin],,DESC)",
+              "                 var a01= RANKX(FILTER(Scorecard,Scorecard[Shipmentid]=EARLIER(Scorecard[Shipmentid])),Scorecard[LoadID],,DESC)",
               "                 var a02=IF(a01=1,a0,BLANK())",
               "//CÁLCULO DE VIAJES AGRIZAR PARA OTD CORRECTO",
               "                 var c0= MAXX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[oVN])",
-              "                 var c01= RANKX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[oVN],,DESC)",
+              "                 var c01= RANKX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[scoreCardId],,DESC)",
               "                 var c03=IF(c01=1,1,BLANK())",
               "//CÁLCULO DE VIAJES MASTRONARDI PARA OTD CORRECTO                 ",
               "          var c1=MAXX(FILTER(Scorecard,Scorecard[tracking mastro]=EARLIER(Scorecard[tracking mastro])),Scorecard[LoadID])",
@@ -2641,24 +2596,12 @@
               "          var c3=IF(c2=1,1,BLANK())",
               "          var c4 = IF(Scorecard[ProjectName]=\"Mastronardi_XB\" || Scorecard[ProjectName]=\"Semillas_XB\",c3,IF(Scorecard[ProjectName]=\"Agrizar_XB\",c03,a02))",
               "           return",
-              "          a02"
+              "          c4"
             ],
-            "formatString": "General Date",
             "isDataTypeInferred": true,
             "lineageTag": "c98ac8b9-09ff-42c1-b962-56531dfb7bc3",
-            "summarizeBy": "none",
-            "type": "calculated",
-            "variations": [
-              {
-                "name": "Variation",
-                "defaultHierarchy": {
-                  "hierarchy": "Jerarquía de fechas",
-                  "table": "LocalDateTable_fe62791b-9df0-420b-8abc-3e248e408125"
-                },
-                "isDefault": true,
-                "relationship": "a8ae5263-2144-476b-9cfc-a970e025c1d9"
-              }
-            ]
+            "summarizeBy": "sum",
+            "type": "calculated"
           },
           {
             "name": "ID_Agrizar_origen_2",
@@ -2669,7 +2612,7 @@
               }
             ],
             "dataType": "string",
-            "expression": "IF(Scorecard[Viajes mastro]=1 && Scorecard[Sector]=\"XB\" && Scorecard[ProjectName] in {\"Agrizar_XB\"},Scorecard[ID_Agrizar],\"\")",
+            "expression": "IF(NOT ISBLANK(Scorecard[FechadeOrigen_2]) && Scorecard[Sector]=\"XB\" && Scorecard[ProjectName] in {\"Agrizar_XB\"},Scorecard[ID_Agrizar],\"\")",
             "isDataTypeInferred": true,
             "lineageTag": "04a47792-cddd-4ff7-b7b7-5eb219adf500",
             "summarizeBy": "none",
@@ -2765,7 +2708,7 @@
               }
             ],
             "dataType": "string",
-            "expression": "IF(Scorecard[Viajes mastro 2]=1 && Scorecard[Sector]=\"XB\" && Scorecard[ProjectName] in {\"Agrizar_XB\"},Scorecard[ID_Agrizar],\"\")",
+            "expression": "IF(NOT ISBLANK(Scorecard[FechaDestino_2]) && Scorecard[Sector]=\"XB\" && Scorecard[ProjectName] in {\"Agrizar_XB\"},Scorecard[ID_Agrizar],\"\")",
             "isDataTypeInferred": true,
             "lineageTag": "fe488feb-ea78-453e-a589-4fd698a02919",
             "summarizeBy": "none",
@@ -2879,15 +2822,15 @@
             "expression": [
               "",
               "                var origin1 = LOOKUPVALUE(Estado[Significado],Estado[Estado origen],Scorecard[EstadoOrigenCompleto])",
-              "                var origin0 = LOOKUPVALUE(ABUSA[US STATE],ABUSA[Abbreviation],'Scorecard'[OriginABState])",
-              "                var origin2 = LOOKUPVALUE(ABMEX[Estado],ABMEX[Dos letras],'Scorecard'[OriginABState])",
-              "                var origin3 = LOOKUPVALUE(ABCANADA[State],ABCANADA[ABCANADA],'Scorecard'[OriginABState])",
+              "                var origin0 = LOOKUPVALUE(ABUSA[State],ABUSA[Abb],'Scorecard'[OriginABState])",
+              "                var origin2 = LOOKUPVALUE(ABMEX[State],ABMEX[Abb],'Scorecard'[OriginABState])",
+              "                var origin3 = LOOKUPVALUE(ABCANADA[State],ABCANADA[Abb],'Scorecard'[OriginABState])",
               "                var origin4 = IF(origin1=BLANK(),IF(origin0=BLANK(),IF(origin2=BLANK(),origin3,origin2),origin0),origin1)",
               "                var origin5 = IF(Scorecard[TMS]=\"TMS Arise\",origin4,origin1)",
               "                var destination1 = LOOKUPVALUE(Estado[Significado],Estado[Estado origen],Scorecard[EstadoDestinoCompleto])",
-              "                var destination0 = LOOKUPVALUE(ABUSA[US STATE],ABUSA[Abbreviation],'Scorecard'[DestinationABState])",
-              "                var destination2 = LOOKUPVALUE(ABMEX[Estado],ABMEX[Dos letras],'Scorecard'[destinationABState])",
-              "                var destination3 = LOOKUPVALUE(ABCANADA[State],ABCANADA[ABCANADA],'Scorecard'[destinationABState])",
+              "                var destination0 = LOOKUPVALUE(ABUSA[State],ABUSA[Abb],'Scorecard'[DestinationABState])",
+              "                var destination2 = LOOKUPVALUE(ABMEX[State],ABMEX[Abb],'Scorecard'[destinationABState])",
+              "                var destination3 = LOOKUPVALUE(ABCANADA[State],ABCANADA[Abb],'Scorecard'[destinationABState])",
               "                var destination4 = IF(destination1=BLANK(),IF(destination0=BLANK(),IF(destination2=BLANK(),destination3,destination2),destination0),destination1)",
               "                var destination5 = IF(Scorecard[TMS]=\"TMS Arise\",destination4,destination1)",
               "                RETURN",
@@ -2908,16 +2851,33 @@
             ],
             "dataType": "string",
             "expression": [
-              "VAR ie_1 = IF(Scorecard[RutaPaisCompleto]=\"MEX-MEX\",\"LOCAL\",IF(RIGHT(Scorecard[RutaPaisCompleto],3)=\"MEX\",\"IMPO\",IF(Scorecard[RutaPaisCompleto]=\"USA-USA\",\"EXTRANJERO\",\"EXPO\")))",
+              "",
+              "var origin1 = LOOKUPVALUE(Estado[Significado],Estado[Estado origen],Scorecard[EstadoOrigenCompleto])",
+              "                var origin0 = LOOKUPVALUE(ABUSA[State],ABUSA[Abb],Scorecard[OriginABState])",
+              "                var origin2 = LOOKUPVALUE(ABMEX[State],ABMEX[Abb],'Scorecard'[OriginABState])",
+              "                var origin3 = LOOKUPVALUE(ABCANADA[State],ABCANADA[Abb],'Scorecard'[OriginABState])",
+              "                var origin4 = IF(origin1=BLANK(),IF(origin0=BLANK(),IF(origin2=BLANK(),origin3,origin2),origin0),origin1)",
+              "                var origin5 = IF(Scorecard[TMS]=\"TMS Arise\",origin4,origin1)",
+              "var destination1 = LOOKUPVALUE(Estado[Significado],Estado[Estado origen],Scorecard[EstadoDestinoCompleto])",
+              "                var destination0 = LOOKUPVALUE(ABUSA[State],ABUSA[Abb],Scorecard[DestinationABState])",
+              "                var destination2 = LOOKUPVALUE(ABMEX[State],ABMEX[Abb],'Scorecard'[destinationABState])",
+              "                var destination3 = LOOKUPVALUE(ABCANADA[State],ABCANADA[Abb],'Scorecard'[destinationABState])",
+              "                var destination4 = IF(destination1=BLANK(),IF(destination0=BLANK(),IF(destination2=BLANK(),destination3,destination2),destination0),destination1)",
+              "                var destination5 = IF(Scorecard[TMS]=\"TMS Arise\",destination4,destination1)",
+              "                ",
+              "",
+              "VAR ie_1 = IF(Scorecard[RutaPaisCompleto]=\"MEX-MEX\",\"INTRA-MEX\",IF(LEFT(Scorecard[RutaPaisCompleto],3) IN {\"CAN\",\"USA\"} && NOT Scorecard[RutaPaisCompleto]=\"USA-USA\",\"D2D-IMPO\",IF(Scorecard[RutaPaisCompleto]=\"USA-USA\",\"INTRA-USA\",IF(LEFT(Scorecard[RutaPaisCompleto],3)=\"MEX\",\"D2D-EXPO\"))))",
               "            VAR ie_2 = SWITCH(TRUE(),",
               "                       Scorecard[CiudadOrigenCompleto] in ",
               "                       {\"Altamira\",\"Veracruz\",\"Manzanillo\",\"Lázaro Cárdenas\",\"Mazatlán\",\"Guaymas\",\"Ensenada\"} , \"PUERTOS\",",
               "                       Scorecard[CiudadDestinoCompleto] in ",
               "                       {\"Altamira\",\"Veracruz\",\"Manzanillo\",\"Lázaro Cárdenas\",\"Mazatlán\",\"Guaymas\",\"Ensenada\"} , \"PUERTOS\",",
               "                       Scorecard[CiudadOrigenCompleto] in ",
-              "                       {\"Pharr\",\"McAllen\",\"San Diego\",\"Laredo\",\"Eagle Pass\",\"El Paso\",\"Nogales\",\"Calexico\",\"Otay\",\"Brownsville\",\"Donna\",\"Hidalgo\"} , \"FRONTERA\",",
+              "                       {\"Pharr\",\"McAllen\",\"San Diego\",\"Laredo\",\"Eagle Pass\",\"El Paso\",\"Nogales\",\"Calexico\",\"Otay\",\"Brownsville\",\"Donna\",\"Hidalgo\",\"Nuevo Laredo\",\"Tijuana\"} , \"B2D\",",
               "                       Scorecard[CiudadDestinoCompleto] in ",
-              "                       {\"Pharr\",\"McAllen\",\"San Diego\",\"Laredo\",\"Eagle Pass\",\"El Paso\",\"Nogales\",\"Calexico\",\"Otay\",\"Brownsville\",\"Donna\",\"Hidalgo\"} , \"FRONTERA\",",
+              "                       {\"Pharr\",\"McAllen\",\"San Diego\",\"Laredo\",\"Eagle Pass\",\"El Paso\",\"Nogales\",\"Calexico\",\"Otay\",\"Brownsville\",\"Donna\",\"Hidalgo\",\"Nuevo Laredo\",\"Tijuana\"} , \"B2D\",",
+              "                       origin5 in {\"Guatemala\",\"Chiapas\"},\"CENAM\",",
+              "                      destination5 in {\"Guatemala\",\"Chiapas\"},\"CENAM\",",
               "                       ie_1)",
               "    RETURN",
               "    ie_2"
@@ -2937,8 +2897,14 @@
             ],
             "dataType": "string",
             "expression": [
-              "LOOKUPVALUE('Shipping Location (lat_lon)'[País],'Shipping Location (lat_lon)'[Estado],Scorecard[EstadoOrigenCompleto])&\"-\"&",
-              "         LOOKUPVALUE('Shipping Location (lat_lon)'[País],'Shipping Location (lat_lon)'[Estado],Scorecard[EstadoDestinoCompleto])"
+              "VAR or_1 = LOOKUPVALUE('Shipping Location (lat_lon)'[País],'Shipping Location (lat_lon)'[Estado],Scorecard[EstadoOrigenCompleto])",
+              "         VAR dest_1 = LOOKUPVALUE('Shipping Location (lat_lon)'[País],'Shipping Location (lat_lon)'[Estado],Scorecard[EstadoDestinoCompleto])",
+              "         VAR or_2 = LOOKUPVALUE('AB NEW'[Country],'AB NEW'[Abb],Scorecard[EstadoOrigenCompleto])",
+              "         VAR dest_2 = LOOKUPVALUE('AB NEW'[Country],'AB NEW'[Abb],Scorecard[EstadoDestinoCompleto])",
+              "         VAR or_f = IF(or_1=BLANK(),or_2,or_1)",
+              "         VAR dest_f = IF(dest_1=BLANK(),dest_2,dest_1)",
+              "         RETURN",
+              "         or_f&\"-\"&dest_f"
             ],
             "isDataTypeInferred": true,
             "lineageTag": "06a7deb4-426a-4af3-a240-11824bcb6fe7",
@@ -3170,9 +3136,9 @@
             "expression": [
               "",
               "                var origin1 = LOOKUPVALUE(Estado[Significado],Estado[Estado origen],Scorecard[EstadoOrigenCompleto])",
-              "                var origin0 = LOOKUPVALUE(ABUSA[US STATE],ABUSA[Abbreviation],Scorecard[OriginABState])",
-              "                var origin2 = LOOKUPVALUE(ABMEX[Estado],ABMEX[Dos letras],'Scorecard'[OriginABState])",
-              "                var origin3 = LOOKUPVALUE(ABCANADA[State],ABCANADA[ABCANADA],'Scorecard'[OriginABState])",
+              "                var origin0 = LOOKUPVALUE(ABUSA[State],ABUSA[Abb],Scorecard[OriginABState])",
+              "                var origin2 = LOOKUPVALUE(ABMEX[State],ABMEX[Abb],'Scorecard'[OriginABState])",
+              "                var origin3 = LOOKUPVALUE(ABCANADA[State],ABCANADA[Abb],'Scorecard'[OriginABState])",
               "                var origin4 = IF(origin1=BLANK(),IF(origin0=BLANK(),IF(origin2=BLANK(),origin3,origin2),origin0),origin1)",
               "                var origin5 = IF(Scorecard[TMS]=\"TMS Arise\",origin4,origin1)",
               "                var ciudad = Scorecard[CiudadOrigenCompleto]",
@@ -3196,9 +3162,9 @@
             "expression": [
               "",
               "                var destination1 = LOOKUPVALUE(Estado[Significado],Estado[Estado origen],Scorecard[EstadoDestinoCompleto])",
-              "                var destination0 = LOOKUPVALUE(ABUSA[US STATE],ABUSA[Abbreviation],Scorecard[DestinationABState])",
-              "                var destination2 = LOOKUPVALUE(ABMEX[Estado],ABMEX[Dos letras],'Scorecard'[destinationABState])",
-              "                var destination3 = LOOKUPVALUE(ABCANADA[State],ABCANADA[ABCANADA],'Scorecard'[destinationABState])",
+              "                var destination0 = LOOKUPVALUE(ABUSA[State],ABUSA[Abb],Scorecard[DestinationABState])",
+              "                var destination2 = LOOKUPVALUE(ABMEX[State],ABMEX[Abb],'Scorecard'[destinationABState])",
+              "                var destination3 = LOOKUPVALUE(ABCANADA[State],ABCANADA[Abb],'Scorecard'[destinationABState])",
               "                var destination4 = IF(destination1=BLANK(),IF(destination0=BLANK(),IF(destination2=BLANK(),destination3,destination2),destination0),destination1)",
               "                var destination5 = IF(Scorecard[TMS]=\"TMS Arise\",destination4,destination1)",
               "                var ciudad = Scorecard[CiudadDestinoCompleto]",
@@ -3599,6 +3565,62 @@
             "lineageTag": "dcb4d143-5e8a-464a-866c-47ee0dd39a25",
             "sourceColumn": "Equipment",
             "summarizeBy": "none"
+          },
+          {
+            "name": "ExchangeAmountRating",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "76cd88da-ce55-4003-a777-8d6dd6cb9398",
+            "sourceColumn": "ExchangeAmountRating",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "transitUsr",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a9b570ac-f454-4419-85b6-8cc3c4bdfe94",
+            "sourceColumn": "transitUsr",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pesoCargado",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "18d2841a-584a-446f-bb56-89634ffd525f",
+            "sourceColumn": "pesoCargado",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "pesoEntregado",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ac9ec2f2-83e0-4a65-9699-a2bab756a87e",
+            "sourceColumn": "pesoEntregado",
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "a06b746f-3283-4677-94ae-6ff28ca3cfc0",
@@ -3610,7 +3632,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Origen = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, CommandTimeout=#duration(0, 0, 30, 0)]),",
+                "    Origen = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, CommandTimeout=#duration(0, 2, 0, 0)]),",
                 "    testtxlintegra_ScoreCard_reports_v3 = Origen{[Schema=\"prodtxlintegra\",Item=\"ScoreCard_reports_v3\"]}[Data],",
                 "    #\"Sorted Rows\" = Table.Sort(testtxlintegra_ScoreCard_reports_v3,{{\"ActualPickupDepartureDateTimeDriverCheckout\", Order.Descending}}),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Sorted Rows\",{{\"LoadID\", type text}}),",
@@ -10452,10 +10474,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -12024,10 +12042,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -12565,7 +12579,7 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Table"
+            "value": "Exception"
           },
           {
             "name": "PBI_NavigationStepName",
@@ -13203,838 +13217,6 @@
             }
           }
         ]
-      },
-      {
-        "name": "LocalDateTable_8aaf40a7-8b43-41e2-ad5d-aa22bdadec95",
-        "annotations": [
-          {
-            "name": "__PBI_LocalDateTable",
-            "value": "true"
-          }
-        ],
-        "columns": [
-          {
-            "name": "Date",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              }
-            ],
-            "dataCategory": "PaddedDateTableDates",
-            "dataType": "dateTime",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "isNameInferred": true,
-            "lineageTag": "be251c30-d2e5-46bd-8f7d-9f74f103b075",
-            "sourceColumn": "[Date]",
-            "summarizeBy": "none",
-            "type": "calculatedTableColumn"
-          },
-          {
-            "name": "Año",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Year"
-              }
-            ],
-            "dataCategory": "Years",
-            "dataType": "int64",
-            "expression": "YEAR([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "7b104f6c-13d9-4557-921d-75515d58b6ce",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "NroMes",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "MonthNumber"
-              }
-            ],
-            "dataCategory": "MonthOfYear",
-            "dataType": "int64",
-            "expression": "MONTH([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "9fda0ce6-f7a7-434a-9fb1-4e09fc4dd4f8",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Mes",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Month"
-              }
-            ],
-            "dataCategory": "Months",
-            "dataType": "string",
-            "expression": "FORMAT([Date], \"MMMM\")",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "7ff13dca-f71c-489f-84f5-70082918c96e",
-            "sortByColumn": "NroMes",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "NroTrimestre",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "QuarterNumber"
-              }
-            ],
-            "dataCategory": "QuarterOfYear",
-            "dataType": "int64",
-            "expression": "INT(([NroMes] + 2) / 3)",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "15018de9-6995-4ce9-bdd3-36d5d2bd6142",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Trimestre",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Quarter"
-              }
-            ],
-            "dataCategory": "Quarters",
-            "dataType": "string",
-            "expression": "\"Trim. \" & [NroTrimestre]",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "ddd951bf-3a51-4618-a957-d7590c7a4bad",
-            "sortByColumn": "NroTrimestre",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Día",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Day"
-              }
-            ],
-            "dataCategory": "DayOfMonth",
-            "dataType": "int64",
-            "expression": "DAY([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "14d5f56f-ba3c-4abd-9a47-39f6e71d0b32",
-            "summarizeBy": "none",
-            "type": "calculated"
-          }
-        ],
-        "hierarchies": [
-          {
-            "name": "Jerarquía de fechas",
-            "annotations": [
-              {
-                "name": "TemplateId",
-                "value": "DateHierarchy"
-              }
-            ],
-            "levels": [
-              {
-                "name": "Año",
-                "column": "Año",
-                "lineageTag": "99b5ac86-4a43-4d6f-8db1-0a1243bc8fe6",
-                "ordinal": 0
-              },
-              {
-                "name": "Trimestre",
-                "column": "Trimestre",
-                "lineageTag": "8ca43d7f-fe75-42cd-a442-9c50052da6dc",
-                "ordinal": 1
-              },
-              {
-                "name": "Mes",
-                "column": "Mes",
-                "lineageTag": "102924d9-b2f2-4c1f-a36c-41c0699fdaa2",
-                "ordinal": 2
-              },
-              {
-                "name": "Día",
-                "column": "Día",
-                "lineageTag": "d75512ae-49e5-491c-9df3-7a9d2b77fc9d",
-                "ordinal": 3
-              }
-            ],
-            "lineageTag": "4249f17c-97a5-4794-a2fc-bd34ae3400bf"
-          }
-        ],
-        "isHidden": true,
-        "lineageTag": "09a6bc6d-85a6-44e1-84a2-20bb55b67a9f",
-        "partitions": [
-          {
-            "name": "LocalDateTable_8aaf40a7-8b43-41e2-ad5d-aa22bdadec95-b1c71fea-7146-4b0e-bd91-1b90fe6278b5",
-            "mode": "import",
-            "source": {
-              "expression": "Calendar(Date(Year(MIN('Scorecard'[FechadeOrigen])), 1, 1), Date(Year(MAX('Scorecard'[FechadeOrigen])), 12, 31))",
-              "type": "calculated"
-            }
-          }
-        ],
-        "showAsVariationsOnly": true
-      },
-      {
-        "name": "LocalDateTable_db98b16b-82e5-4afc-a911-bf3eb3909928",
-        "annotations": [
-          {
-            "name": "__PBI_LocalDateTable",
-            "value": "true"
-          }
-        ],
-        "columns": [
-          {
-            "name": "Date",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              }
-            ],
-            "dataCategory": "PaddedDateTableDates",
-            "dataType": "dateTime",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "isNameInferred": true,
-            "lineageTag": "13226c79-e2f2-4820-9503-08ebb9588627",
-            "sourceColumn": "[Date]",
-            "summarizeBy": "none",
-            "type": "calculatedTableColumn"
-          },
-          {
-            "name": "Año",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Year"
-              }
-            ],
-            "dataCategory": "Years",
-            "dataType": "int64",
-            "expression": "YEAR([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "54ee4b72-a9eb-4731-9325-66ebffadd596",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "NroMes",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "MonthNumber"
-              }
-            ],
-            "dataCategory": "MonthOfYear",
-            "dataType": "int64",
-            "expression": "MONTH([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "5434f4cf-6d0c-4be2-a6f8-1b12a104f4eb",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Mes",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Month"
-              }
-            ],
-            "dataCategory": "Months",
-            "dataType": "string",
-            "expression": "FORMAT([Date], \"MMMM\")",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "509f1d2b-f5d8-4bd9-b564-05c08ac17edc",
-            "sortByColumn": "NroMes",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "NroTrimestre",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "QuarterNumber"
-              }
-            ],
-            "dataCategory": "QuarterOfYear",
-            "dataType": "int64",
-            "expression": "INT(([NroMes] + 2) / 3)",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "aea79dcf-54aa-490c-a886-44f389180eb7",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Trimestre",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Quarter"
-              }
-            ],
-            "dataCategory": "Quarters",
-            "dataType": "string",
-            "expression": "\"Trim. \" & [NroTrimestre]",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "e0bcbb05-1776-4ae6-83a1-f6880081996a",
-            "sortByColumn": "NroTrimestre",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Día",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Day"
-              }
-            ],
-            "dataCategory": "DayOfMonth",
-            "dataType": "int64",
-            "expression": "DAY([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "87face34-5a84-4f75-bd21-1db137860532",
-            "summarizeBy": "none",
-            "type": "calculated"
-          }
-        ],
-        "hierarchies": [
-          {
-            "name": "Jerarquía de fechas",
-            "annotations": [
-              {
-                "name": "TemplateId",
-                "value": "DateHierarchy"
-              }
-            ],
-            "levels": [
-              {
-                "name": "Año",
-                "column": "Año",
-                "lineageTag": "91270097-065d-44d6-b74c-0ee313056c74",
-                "ordinal": 0
-              },
-              {
-                "name": "Trimestre",
-                "column": "Trimestre",
-                "lineageTag": "4935bddc-adef-4687-a1eb-7b2fdb409288",
-                "ordinal": 1
-              },
-              {
-                "name": "Mes",
-                "column": "Mes",
-                "lineageTag": "e1a9ed84-67ae-4bc8-8471-7c0bf79e113a",
-                "ordinal": 2
-              },
-              {
-                "name": "Día",
-                "column": "Día",
-                "lineageTag": "202d334f-f4b0-4fbe-bdce-00d0ccc7656a",
-                "ordinal": 3
-              }
-            ],
-            "lineageTag": "21ff0f67-1b93-44c9-b2bf-d0c4fb1dc598"
-          }
-        ],
-        "isHidden": true,
-        "lineageTag": "b8b5d1d5-0435-4b44-9802-e5162cec4570",
-        "partitions": [
-          {
-            "name": "LocalDateTable_db98b16b-82e5-4afc-a911-bf3eb3909928-d23feb3f-6dee-445b-8a81-19c8ad2e5760",
-            "mode": "import",
-            "source": {
-              "expression": "Calendar(Date(Year(MIN('Scorecard'[FechaDestino])), 1, 1), Date(Year(MAX('Scorecard'[FechaDestino])), 12, 31))",
-              "type": "calculated"
-            }
-          }
-        ],
-        "showAsVariationsOnly": true
-      },
-      {
-        "name": "LocalDateTable_a15e4ed9-a400-426d-a853-71acb467469c",
-        "annotations": [
-          {
-            "name": "__PBI_LocalDateTable",
-            "value": "true"
-          }
-        ],
-        "columns": [
-          {
-            "name": "Date",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              }
-            ],
-            "dataCategory": "PaddedDateTableDates",
-            "dataType": "dateTime",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "isNameInferred": true,
-            "lineageTag": "ec3db479-ff55-4e34-a097-04c9d275673a",
-            "sourceColumn": "[Date]",
-            "summarizeBy": "none",
-            "type": "calculatedTableColumn"
-          },
-          {
-            "name": "Año",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Year"
-              }
-            ],
-            "dataCategory": "Years",
-            "dataType": "int64",
-            "expression": "YEAR([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "71a2d316-1b36-4b16-8e53-739fe46ff695",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "NroMes",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "MonthNumber"
-              }
-            ],
-            "dataCategory": "MonthOfYear",
-            "dataType": "int64",
-            "expression": "MONTH([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "0c3cde37-b1ab-4bc5-86de-1ee67658e65c",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Mes",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Month"
-              }
-            ],
-            "dataCategory": "Months",
-            "dataType": "string",
-            "expression": "FORMAT([Date], \"MMMM\")",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "e0233f66-1c87-4cb2-b107-551134120606",
-            "sortByColumn": "NroMes",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "NroTrimestre",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "QuarterNumber"
-              }
-            ],
-            "dataCategory": "QuarterOfYear",
-            "dataType": "int64",
-            "expression": "INT(([NroMes] + 2) / 3)",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "950081ac-0e9d-4c6c-8312-75996d7a803f",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Trimestre",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Quarter"
-              }
-            ],
-            "dataCategory": "Quarters",
-            "dataType": "string",
-            "expression": "\"Trim. \" & [NroTrimestre]",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "1da9786a-af37-4055-8d44-6cbb67103c87",
-            "sortByColumn": "NroTrimestre",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Día",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Day"
-              }
-            ],
-            "dataCategory": "DayOfMonth",
-            "dataType": "int64",
-            "expression": "DAY([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "0edfb0d3-fb9f-40b2-a5e4-fbeceddb791b",
-            "summarizeBy": "none",
-            "type": "calculated"
-          }
-        ],
-        "hierarchies": [
-          {
-            "name": "Jerarquía de fechas",
-            "annotations": [
-              {
-                "name": "TemplateId",
-                "value": "DateHierarchy"
-              }
-            ],
-            "levels": [
-              {
-                "name": "Año",
-                "column": "Año",
-                "lineageTag": "8039f918-602d-4703-99d5-37b7fcffbfeb",
-                "ordinal": 0
-              },
-              {
-                "name": "Trimestre",
-                "column": "Trimestre",
-                "lineageTag": "e45cdedb-da19-46d0-b405-5e8146fcf682",
-                "ordinal": 1
-              },
-              {
-                "name": "Mes",
-                "column": "Mes",
-                "lineageTag": "417c06c2-02d5-474f-a6b3-5ed788d44ca2",
-                "ordinal": 2
-              },
-              {
-                "name": "Día",
-                "column": "Día",
-                "lineageTag": "181f3f9b-855d-4bf2-bc3b-a25f6d0f7e69",
-                "ordinal": 3
-              }
-            ],
-            "lineageTag": "bc7a2e07-facf-418e-a719-494468ead0c4"
-          }
-        ],
-        "isHidden": true,
-        "lineageTag": "32d012ec-67d3-49d5-a578-ca45d779fc62",
-        "partitions": [
-          {
-            "name": "LocalDateTable_a15e4ed9-a400-426d-a853-71acb467469c-c55f93fc-212c-4b29-9779-69d53a692048",
-            "mode": "import",
-            "source": {
-              "expression": "Calendar(Date(Year(MIN('Scorecard'[FechadeOrigen_2])), 1, 1), Date(Year(MAX('Scorecard'[FechadeOrigen_2])), 12, 31))",
-              "type": "calculated"
-            }
-          }
-        ],
-        "showAsVariationsOnly": true
-      },
-      {
-        "name": "LocalDateTable_fe62791b-9df0-420b-8abc-3e248e408125",
-        "annotations": [
-          {
-            "name": "__PBI_LocalDateTable",
-            "value": "true"
-          }
-        ],
-        "columns": [
-          {
-            "name": "Date",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              }
-            ],
-            "dataCategory": "PaddedDateTableDates",
-            "dataType": "dateTime",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "isNameInferred": true,
-            "lineageTag": "1405295a-ab09-4b24-9fd7-eca4d95d662e",
-            "sourceColumn": "[Date]",
-            "summarizeBy": "none",
-            "type": "calculatedTableColumn"
-          },
-          {
-            "name": "Año",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Year"
-              }
-            ],
-            "dataCategory": "Years",
-            "dataType": "int64",
-            "expression": "YEAR([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "fe8e8920-e4b5-4d7e-a9f8-ac83526d26f2",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "NroMes",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "MonthNumber"
-              }
-            ],
-            "dataCategory": "MonthOfYear",
-            "dataType": "int64",
-            "expression": "MONTH([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "bf258cfa-5374-4349-acf4-144fd5fa910e",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Mes",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Month"
-              }
-            ],
-            "dataCategory": "Months",
-            "dataType": "string",
-            "expression": "FORMAT([Date], \"MMMM\")",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "78ae2cf4-4a39-40ba-b942-0c3e1e09dba2",
-            "sortByColumn": "NroMes",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "NroTrimestre",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "QuarterNumber"
-              }
-            ],
-            "dataCategory": "QuarterOfYear",
-            "dataType": "int64",
-            "expression": "INT(([NroMes] + 2) / 3)",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "9d580bbc-da4a-47d0-be69-a286e7181418",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Trimestre",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Quarter"
-              }
-            ],
-            "dataCategory": "Quarters",
-            "dataType": "string",
-            "expression": "\"Trim. \" & [NroTrimestre]",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "bd4ba6d0-f788-4a33-997f-9f7a7986c404",
-            "sortByColumn": "NroTrimestre",
-            "summarizeBy": "none",
-            "type": "calculated"
-          },
-          {
-            "name": "Día",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "User"
-              },
-              {
-                "name": "TemplateId",
-                "value": "Day"
-              }
-            ],
-            "dataCategory": "DayOfMonth",
-            "dataType": "int64",
-            "expression": "DAY([Date])",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "lineageTag": "060b2f1c-af04-4496-b18a-af72b59bd96b",
-            "summarizeBy": "none",
-            "type": "calculated"
-          }
-        ],
-        "hierarchies": [
-          {
-            "name": "Jerarquía de fechas",
-            "annotations": [
-              {
-                "name": "TemplateId",
-                "value": "DateHierarchy"
-              }
-            ],
-            "levels": [
-              {
-                "name": "Año",
-                "column": "Año",
-                "lineageTag": "fcfecf0e-fbbf-48e1-a4d9-41362713b670",
-                "ordinal": 0
-              },
-              {
-                "name": "Trimestre",
-                "column": "Trimestre",
-                "lineageTag": "7a155633-d6e7-4ffe-8d4d-9d0ad3f14e4c",
-                "ordinal": 1
-              },
-              {
-                "name": "Mes",
-                "column": "Mes",
-                "lineageTag": "5340964c-fff6-4f55-a54f-a16724fc7cc9",
-                "ordinal": 2
-              },
-              {
-                "name": "Día",
-                "column": "Día",
-                "lineageTag": "8d22b13d-4be0-4c5c-93b4-326ac7977593",
-                "ordinal": 3
-              }
-            ],
-            "lineageTag": "acb5ba86-999c-49cd-be3a-5bee7d4a8a3d"
-          }
-        ],
-        "isHidden": true,
-        "lineageTag": "964c7cd5-575e-46c9-b78e-359a10d52a50",
-        "partitions": [
-          {
-            "name": "LocalDateTable_fe62791b-9df0-420b-8abc-3e248e408125-84eb4b61-877a-48cd-9208-9f5dc0299a15",
-            "mode": "import",
-            "source": {
-              "expression": "Calendar(Date(Year(MIN('Scorecard'[FechaDestino_2])), 1, 1), Date(Year(MAX('Scorecard'[FechaDestino_2])), 12, 31))",
-              "type": "calculated"
-            }
-          }
-        ],
-        "showAsVariationsOnly": true
       },
       {
         "name": "EstadosOrigenAgrizar",
@@ -14762,10 +13944,6 @@
         "name": "TMSARISE",
         "annotations": [
           {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          },
-          {
             "name": "PBI_ResultType",
             "value": "Table"
           }
@@ -15251,7 +14429,7 @@
         ],
         "columns": [
           {
-            "name": "Estado",
+            "name": "State",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -15260,11 +14438,11 @@
             ],
             "dataType": "string",
             "lineageTag": "6c756b43-9eba-4a51-9beb-50e64140d644",
-            "sourceColumn": "Estado",
+            "sourceColumn": "State",
             "summarizeBy": "none"
           },
           {
-            "name": "Dos letras",
+            "name": "Abb",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -15273,7 +14451,20 @@
             ],
             "dataType": "string",
             "lineageTag": "30b486c4-9ac6-4f29-a2f5-22cff82b9720",
-            "sourceColumn": "Dos letras",
+            "sourceColumn": "Abb",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "da7a8b46-ce44-453d-9b5a-66f33cf1304b",
+            "sourceColumn": "Country",
             "summarizeBy": "none"
           }
         ],
@@ -15294,9 +14485,12 @@
                 "    #\"Replaced Value2\" = Table.ReplaceValue(#\"Replaced Value1\",\"EME\",\"EM\",Replacer.ReplaceText,{\"Dos letras\"}),",
                 "    #\"Cleaned Text\" = Table.TransformColumns(#\"Replaced Value2\",{{\"Dos letras\", Text.Clean, type text}}),",
                 "    #\"Trimmed Text\" = Table.TransformColumns(#\"Cleaned Text\",{{\"Dos letras\", Text.Trim, type text}}),",
-                "    #\"Replaced Value3\" = Table.ReplaceValue(#\"Trimmed Text\",\"CO\",\"CO.\",Replacer.ReplaceText,{\"Dos letras\"})",
+                "    #\"Replaced Value3\" = Table.ReplaceValue(#\"Trimmed Text\",\"CO\",\"CO.\",Replacer.ReplaceText,{\"Dos letras\"}),",
+                "    #\"Added Custom\" = Table.AddColumn(#\"Replaced Value3\", \"Country\", each \"MEX\"),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Added Custom\",{{\"Country\", type text}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type1\",{{\"Estado\", \"State\"}, {\"Dos letras\", \"Abb\"}})",
                 "in",
-                "    #\"Replaced Value3\""
+                "    #\"Renamed Columns\""
               ],
               "type": "m"
             }
@@ -15309,11 +14503,15 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
           {
-            "name": "US STATE",
+            "name": "State",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -15322,11 +14520,11 @@
             ],
             "dataType": "string",
             "lineageTag": "65e14822-bc31-4893-92c5-be371f067c1d",
-            "sourceColumn": "US STATE",
+            "sourceColumn": "State",
             "summarizeBy": "none"
           },
           {
-            "name": "Abbreviation",
+            "name": "Abb",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -15335,7 +14533,20 @@
             ],
             "dataType": "string",
             "lineageTag": "d33503d9-092d-4a42-9a54-dacb89ae5d7c",
-            "sourceColumn": "Abbreviation",
+            "sourceColumn": "Abb",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2f10c868-7c6e-49d9-a4d9-c1581e5768fb",
+            "sourceColumn": "Country",
             "summarizeBy": "none"
           }
         ],
@@ -15350,9 +14561,12 @@
                 "let",
                 "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\Eduardo Vargas\\OneDrive - Traxión\\Escritorio\\XB\\Ubicaciones\\StateAbbreviations.xlsx\"), null, true),",
                 "    AbUSA_Table = Source{[Item=\"AbUSA\",Kind=\"Table\"]}[Data],",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(AbUSA_Table,{{\"US STATE\", type text}, {\"Abbreviation\", type text}})",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(AbUSA_Table,{{\"US STATE\", type text}, {\"Abbreviation\", type text}}),",
+                "    #\"Added Custom\" = Table.AddColumn(#\"Changed Type\", \"Country\", each \"USA\"),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Added Custom\",{{\"Country\", type text}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type1\",{{\"US STATE\", \"State\"}, {\"Abbreviation\", \"Abb\"}})",
                 "in",
-                "    #\"Changed Type\""
+                "    #\"Renamed Columns\""
               ],
               "type": "m"
             }
@@ -15365,11 +14579,15 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
           {
-            "name": "ABCANADA",
+            "name": "Abb",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -15378,7 +14596,7 @@
             ],
             "dataType": "string",
             "lineageTag": "7c978b10-c891-4c02-a820-7be6b53b0268",
-            "sourceColumn": "ABCANADA",
+            "sourceColumn": "Abb",
             "summarizeBy": "none"
           },
           {
@@ -15393,6 +14611,19 @@
             "lineageTag": "e87fc16b-ab06-4ab3-91fc-eb2272cd4b59",
             "sourceColumn": "State",
             "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d0d263f2-49f5-4cc3-aad0-ddb34edf0634",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "0d3287b1-8d32-43cd-9c67-67546acb9b8f",
@@ -15405,9 +14636,11 @@
               "expression": [
                 "let",
                 "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i45W8vdT0lHyzytJLMrMV4rViVYKdAYKBJamJqUmK8XGAgA=\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [ABCANADA = _t, State = _t]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"ABCANADA\", type text}, {\"State\", type text}})",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"ABCANADA\", type text}, {\"State\", type text}}),",
+                "    #\"Added Custom\" = Table.AddColumn(#\"Changed Type\", \"Country\", each \"CAN\"),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Added Custom\",{{\"ABCANADA\", \"Abb\"}})",
                 "in",
-                "    #\"Changed Type\""
+                "    #\"Renamed Columns\""
               ],
               "type": "m"
             }
@@ -15815,6 +15048,78 @@
           }
         ],
         "showAsVariationsOnly": true
+      },
+      {
+        "name": "AB NEW",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "State",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "89d75a97-eb94-4ac8-ac48-57ee897ff833",
+            "sourceColumn": "State",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Abb",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "13611124-7627-46ff-b8db-94cf36178f5a",
+            "sourceColumn": "Abb",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "48f10325-321b-4f54-b08e-4c9063ab3cd7",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "5ef4d62a-5a24-450e-bc1f-a362cb809b7b",
+        "partitions": [
+          {
+            "name": "AB NEW",
+            "mode": "import",
+            "queryGroup": "Scorecard",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.Combine({ABMEX, ABUSA, ABCANADA}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Country\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
       }
     ]
   }
