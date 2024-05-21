@@ -199,11 +199,11 @@
         ],
         "expression": [
           "let",
-          "    Source = (Parameter1) => let",
-          "        Source = Excel.Workbook(Parameter1, null, true),",
-          "        #\"Relacion facturacion diaria_Sheet\" = Source{[Item=\"Relacion facturacion diaria\",Kind=\"Sheet\"]}[Data]",
-          "    in",
-          "        #\"Relacion facturacion diaria_Sheet\"",
+          "    Source = (Parameter1 as binary) => let",
+          "    Source = Excel.Workbook(Parameter1, null, true),",
+          "    #\"Relacion facturacion diaria_Sheet\" = Source{[Item=\"Relacion facturacion diaria\",Kind=\"Sheet\"]}[Data]",
+          "in",
+          "    #\"Relacion facturacion diaria_Sheet\"",
           "in",
           "    Source"
         ],
@@ -4769,7 +4769,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, Query=\"SELECT *,#(lf)       CASE #(lf)          WHEN ProjectName LIKE '%_XB%' OR ProjectName='WAVEOPTICS' THEN 'XB'#(lf)          WHEN ProjectName IN ('SEGALMEX','DICONSA','LICONSA') THEN 'GOB'#(lf)          WHEN ProjectName IN ('PROYECTOIMSSAVIOR','CTL_INSABI','CTL_HRAEI') #(lf)                           OR LEFT(ProjectName,1) IN ('1','2','3') #(lf)                           OR ProjectName LIKE '%IMSS%' #(lf)                           OR BilltoCostumerName LIKE '%IMSS%'#(lf)                           OR BilltoCostumerName LIKE '%INSABI%' THEN 'PHARMA'#(lf)          WHEN ProjectName IS NULL THEN 'NO_PROJECT'#(lf)          ELSE 'NAL'#(lf)       END AS sector,#(lf)       CASE#(lf)          WHEN ExchangeAmountRating > 1 THEN 'USD'#(lf)          ELSE 'MXN'#(lf)       END AS currency_sh,#(lf)       CASE#(lf)          WHEN CurrencyLoad!='Peso Mexicano' THEN 'USD'#(lf)          ELSE 'MXN'#(lf)       END AS currency_load#(lf)FROM ScoreCard_reports_v3\"]),",
+                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, Query=\"SELECT *,#(lf)       CASE #(lf)          WHEN ProjectName LIKE '%_XB%' OR ProjectName='WAVEOPTICS' THEN 'XB'#(lf)          WHEN ProjectName IN ('SEGALMEX','DICONSA','LICONSA') THEN 'GOB'#(lf)          WHEN ProjectName IN ('PROYECTOIMSSAVIOR','CTL_INSABI','CTL_HRAEI') #(lf)                           OR LEFT(ProjectName,1) IN ('1','2','3') #(lf)                           OR ProjectName LIKE '%IMSS%' #(lf)                           OR BilltoCostumerName LIKE '%IMSS%'#(lf)                           OR BilltoCostumerName LIKE '%INSABI%' THEN 'PHARMA'#(lf)          WHEN ProjectName IS NULL THEN 'NO_PROJECT'#(lf)          ELSE 'NAL'#(lf)       END AS sector,#(lf)       CASE#(lf)          WHEN ExchangeAmountRating > 1 THEN 'USD'#(lf)          ELSE 'MXN'#(lf)       END AS currency_sh,#(lf)       CASE#(lf)          WHEN CurrencyLoad!='Peso Mexicano' THEN 'USD'#(lf)          ELSE 'MXN'#(lf)       END AS currency_load#(lf)FROM ScoreCard_reports_v3\", CommandTimeout=#duration(0, 2, 0, 0)]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"LoadID\", type text}, {\"ActualPickupDepartureDateTimeDriverCheckout\", type date}}),",
                 "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"ActualPickupDepartureDateTimeDriverCheckout\", \"intransit_date\"}})",
                 "in",
@@ -10780,10 +10780,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -11414,10 +11410,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -12020,10 +12012,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -12842,10 +12830,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
