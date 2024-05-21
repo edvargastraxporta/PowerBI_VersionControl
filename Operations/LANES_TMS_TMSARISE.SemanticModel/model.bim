@@ -2876,8 +2876,8 @@
               "                       {\"Pharr\",\"McAllen\",\"San Diego\",\"Laredo\",\"Eagle Pass\",\"El Paso\",\"Nogales\",\"Calexico\",\"Otay\",\"Brownsville\",\"Donna\",\"Hidalgo\",\"Nuevo Laredo\",\"Tijuana\"} , \"B2D\",",
               "                       Scorecard[CiudadDestinoCompleto] in ",
               "                       {\"Pharr\",\"McAllen\",\"San Diego\",\"Laredo\",\"Eagle Pass\",\"El Paso\",\"Nogales\",\"Calexico\",\"Otay\",\"Brownsville\",\"Donna\",\"Hidalgo\",\"Nuevo Laredo\",\"Tijuana\"} , \"B2D\",",
-              "                       origin5 in {\"Guatemala\",\"Chiapas\"},\"CENAM\",",
-              "                      destination5 in {\"Guatemala\",\"Chiapas\"},\"CENAM\",",
+              "                       origin5 in {\"Guatemala\",\"Chiapas\"} && Scorecard[Sector]=\"XB\",\"CENAM\",",
+              "                      destination5 in {\"Guatemala\",\"Chiapas\"} && Scorecard[Sector]=\"XB\",\"CENAM\",",
               "                       ie_1)",
               "    RETURN",
               "    ie_2"
@@ -3346,10 +3346,12 @@
             ],
             "dataType": "double",
             "expression": [
-              "VAR C_1 = SUMX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[INGRESO_USD])",
+              "",
+              "                 VAR C_0 = Scorecard[INGRESO_USD]",
+              "                 VAR C_1 = SUMX(FILTER(Scorecard,Scorecard[TrackingNumber]=EARLIER(Scorecard[TrackingNumber])),Scorecard[INGRESO_USD])",
               "                 VAR C_11 = SUMX(FILTER(Scorecard,Scorecard[tracking mastro]=EARLIER(Scorecard[tracking mastro])),Scorecard[INGRESO_USD]/Scorecard[COUNTIF for Shipments])",
               "                 VAR C_2 = AVERAGEX(FILTER(Scorecard,Scorecard[ShipmentID]=EARLIER(Scorecard[ShipmentID])),Scorecard[INGRESO_USD])",
-              "                 VAR C_3 = IF(Scorecard[ProjectName] IN {\"Mastronardi_XB\",\"Semillas_XB\"},C_11,C_1)",
+              "                 VAR C_3 = IF(Scorecard[ProjectName] IN {\"Mastronardi_XB\",\"Semillas_XB\"},C_11,IF(Scorecard[ProjectName] IN {\"Agrizar_XB\"},C_1,C_0))",
               "                 VAR C_4 = IF(Scorecard[Currency]=\"US Dollar\",C_3,BLANK())",
               "                 VAR C_5 = IF(Scorecard[Sector]=\"BBA\",Scorecard[GrossAmountRating],C_4)",
               "                 RETURN",
@@ -10374,7 +10376,7 @@
                 "property": "FormatString"
               }
             ],
-            "expression": "SUM(Scorecard[Viajes mastro])",
+            "expression": "IF(SUM(Scorecard[Viajes mastro])=BLANK(),DISTINCTCOUNT(Scorecard[ShipmentID]),SUM(Scorecard[Viajes mastro]))",
             "formatString": "#,0",
             "lineageTag": "2bfef8e8-154c-4aa5-8d76-31eaaa7a9304"
           },
