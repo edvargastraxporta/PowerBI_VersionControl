@@ -2119,7 +2119,11 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Exception"
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -5653,149 +5657,6 @@
             ]
           },
           {
-            "name": "CP_DOC_DATE1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "b7dc84d7-d8a3-45e7-8682-82e7d5959f21",
-            "sourceColumn": "CP_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "CB_DOC_DATE1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "90976592-8cdb-4457-9bf9-f0054d4e2214",
-            "sourceColumn": "CB_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "CA_DOC_DATE1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "0b425b4d-059b-4bf1-adf9-19b762f9212a",
-            "sourceColumn": "CA_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "AB_POS_DOC_DATE1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "d09c9c4e-3d39-41fd-a10a-7f7a1bb4dd36",
-            "sourceColumn": "AB_POS_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "AB_NEG_DOC_DATE1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "a307802d-3250-4d1c-af8a-5b96cccb0484",
-            "sourceColumn": "AB_NEG_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "DF_DOC_DATE1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "8d1f2e53-4679-4c51-bd43-374339de57ac",
-            "sourceColumn": "DF_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "FA_DOC_DATE1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "1aadf24a-e550-4517-89cd-199e1798f413",
-            "sourceColumn": "FA_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "FS_POS_DOC_DATE1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "40fb01da-2c76-4c8a-8b32-62385be4d8a7",
-            "sourceColumn": "FS_POS_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "FS_NEG_DOC_DATE1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "6596922c-fb45-46c7-8622-547d6569f833",
-            "sourceColumn": "FS_NEG_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "NC_DOC_DATE1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "a2c70643-0144-41b6-98bd-47a1ecb1bb2f",
-            "sourceColumn": "NC_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "ND_DOC_DATE1",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "156eb18a-2953-4b04-95d1-a4eabd107f75",
-            "sourceColumn": "ND_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
             "name": "CP_CB_Global",
             "annotations": [
               {
@@ -5963,6 +5824,22 @@
             "isDataTypeInferred": true,
             "lineageTag": "96977a4a-a386-4b41-bff2-5a1926bdf582",
             "type": "calculated"
+          },
+          {
+            "name": "Filter_cont",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": "IF(Scorecard[intransit_date]=BLANK() && Scorecard[fecha_contable]=BLANK(),1,2)",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "4e4d6bd9-c667-40d4-98b8-a3ac61ff9e4b",
+            "summarizeBy": "sum",
+            "type": "calculated"
           }
         ],
         "description": "Main Data Base which contains everything related to TMS data",
@@ -5975,7 +5852,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, Query=\"SELECT *,#(lf)       CASE #(lf)          WHEN ProjectName LIKE '%_XB%' OR ProjectName='WAVEOPTICS' THEN 'XB'#(lf)          WHEN ProjectName IN ('SEGALMEX','DICONSA','LICONSA') THEN 'GOB'#(lf)          WHEN ProjectName IN ('PROYECTOIMSSAVIOR','CTL_INSABI','CTL_HRAEI') #(lf)                           OR LEFT(ProjectName,1) IN ('1','2','3') #(lf)                           OR ProjectName LIKE '%IMSS%' #(lf)                           OR BilltoCostumerName LIKE '%IMSS%'#(lf)                           OR BilltoCostumerName LIKE '%INSABI%' THEN 'PHARMA'#(lf)          WHEN ProjectName IS NULL THEN 'NO_PROJECT'#(lf)          ELSE 'NAL'#(lf)       END AS sector,#(lf)       CASE#(lf)          WHEN ExchangeAmountRating > 1 THEN 'USD'#(lf)          ELSE 'MXN'#(lf)       END AS currency_sh,#(lf)       CASE#(lf)          WHEN CurrencyLoad!='Peso Mexicano' THEN 'USD'#(lf)          ELSE 'MXN'#(lf)       END AS currency_load#(lf)FROM ScoreCard_reports_v3\"]),",
+                "    Source = MySQL.Database(\"prodtxlintegraciones.cluster-ro-cmmiklfwuiys.us-west-2.rds.amazonaws.com\", \"prodtxlintegra\", [ReturnSingleDatabase=true, Query=\"SELECT *,#(lf)       CASE #(lf)          WHEN ProjectName LIKE '%_XB%' OR ProjectName='WAVEOPTICS' THEN 'XB'#(lf)          WHEN ProjectName IN ('SEGALMEX','DICONSA','LICONSA') THEN 'GOB'#(lf)          WHEN ProjectName IN ('PROYECTOIMSSAVIOR','CTL_INSABI','CTL_HRAEI') #(lf)                           OR LEFT(ProjectName,1) IN ('1','2','3') #(lf)                           OR ProjectName LIKE '%IMSS%' #(lf)                           OR BilltoCostumerName LIKE '%IMSS%'#(lf)                           OR BilltoCostumerName LIKE '%INSABI%' THEN 'PHARMA'#(lf)          WHEN ProjectName IS NULL THEN 'NO_PROJECT'#(lf)          ELSE 'NAL'#(lf)       END AS sector,#(lf)       CASE#(lf)          WHEN ExchangeAmountRating > 1 THEN 'USD'#(lf)          ELSE 'MXN'#(lf)       END AS currency_sh,#(lf)       CASE#(lf)          WHEN CurrencyLoad!='Peso Mexicano' THEN 'USD'#(lf)          ELSE 'MXN'#(lf)       END AS currency_load#(lf)FROM ScoreCard_reports_v3\", CommandTimeout=#duration(0, 2, 0, 0)]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"LoadID\", type text}, {\"ActualPickupDepartureDateTimeDriverCheckout\", type date}}),",
                 "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"ActualPickupDepartureDateTimeDriverCheckout\", \"intransit_date\"}}),",
                 "    #\"Appended Query\" = Table.Combine({#\"Renamed Columns\", Referencias_S_SH})",
@@ -17417,7 +17294,7 @@
           },
           {
             "name": "Total_TMS_MXN",
-            "expression": "CALCULATE([Total_sales], FILTER(ALLSELECTED(Scorecard[ShipmentID]), [Filter_cont]=2 && [Comment_Filter]=1))",
+            "expression": "CALCULATE([Total_sales], FILTER(ALLSELECTED(Scorecard[ShipmentID]), [Comment_Filter]=1), Scorecard[Filter_cont]=2)",
             "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
             "lineageTag": "7e37269c-ee70-4c17-a5df-dc38e7798af8"
           },
@@ -17525,13 +17402,18 @@
           },
           {
             "name": "Total_TMS_MC_MXN",
-            "expression": "CALCULATE(SUM(Scorecard[TMS_Mes_Contable]), FILTER(ALLSELECTED(Scorecard[ShipmentID]), [Filter_cont]=2 && [Comment_Filter]=1))",
-            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "CALCULATE(SUM(Scorecard[TMS_Mes_Contable]), FILTER(ALLSELECTED(Scorecard[ShipmentID]), [Comment_Filter]=1), Scorecard[Filter_cont]=2)",
             "lineageTag": "6865626d-603c-4772-a6e3-205df93eb8d3"
           },
           {
             "name": "Total_SAP_MC_MXN",
-            "expression": "CALCULATE(SUM(Scorecard[TotalSAP_MesContable_2]), FILTER(ALLSELECTED(Scorecard[ShipmentID]), [Filter_cont]=2 && [Comment_Filter]=1))",
+            "expression": "CALCULATE(SUM(Scorecard[TotalSAP_MesContable_2]), FILTER(ALLSELECTED(Scorecard[ShipmentID]), [Comment_Filter]=1), Scorecard[Filter_cont]=2)",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "lineageTag": "02414637-fbb4-4fcc-9ccd-0e4b12c18d1c"
           },
@@ -24370,7 +24252,11 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Exception"
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -24428,149 +24314,6 @@
                 "relationship": "aa426d2f-8a94-4b8e-a06f-60f7c83a9c44"
               }
             ]
-          },
-          {
-            "name": "CP_DOC_DATE",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "01904522-e936-4b86-8e8b-d8f01f55cb6a",
-            "sourceColumn": "CP_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "CB_DOC_DATE",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "cf05db1f-c65a-4091-8b2d-bfe578572849",
-            "sourceColumn": "CB_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "CA_DOC_DATE",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "92e4095b-7fc0-49fa-aab4-9e650c8ed7b6",
-            "sourceColumn": "CA_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "AB_POS_DOC_DATE",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "f5fca282-7dc0-4c06-a2e0-f3bc5c7323f0",
-            "sourceColumn": "AB_POS_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "AB_NEG_DOC_DATE",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "2f07396c-da40-4331-91ce-bf1a837f9bbd",
-            "sourceColumn": "AB_NEG_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "DF_DOC_DATE",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "032ce67a-6be8-4ce9-9a32-d5c866f19eef",
-            "sourceColumn": "DF_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "FA_DOC_DATE",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "7f3f72c1-1f18-44a5-b2aa-c473aab29add",
-            "sourceColumn": "FA_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "FS_POS_DOC_DATE",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "4c9545ee-51a3-4745-b073-18681ff17923",
-            "sourceColumn": "FS_POS_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "FS_NEG_DOC_DATE",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "6bbef171-2807-48e7-89e0-b3c1eddd9231",
-            "sourceColumn": "FS_NEG_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "NC_DOC_DATE",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "b55a3632-b565-4e14-8f48-92c51f9020cd",
-            "sourceColumn": "NC_DOC_DATE",
-            "summarizeBy": "none"
-          },
-          {
-            "name": "ND_DOC_DATE",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "e0f2f731-3810-4360-b2ad-94c68c0f47cc",
-            "sourceColumn": "ND_DOC_DATE",
-            "summarizeBy": "none"
           }
         ],
         "lineageTag": "883e1cdb-675b-4f86-95cc-f4cc7504fa46",
@@ -24585,7 +24328,7 @@
                 "    Source = IngresoNoSHMes,",
                 "    #\"Added Custom\" = Table.AddColumn(Source, \"SAP_TABLE\", each \"NO SH REFERENCE\"),",
                 "    #\"Renamed Columns\" = Table.RenameColumns(#\"Added Custom\",{{\"REFERENCE_ID\", \"ShipmentID\"}}),",
-                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Renamed Columns\",{\"BELNR\", \"AWREF\", \"CP\", \"CB\", \"CA\", \"AB_POS\", \"AB_NEG\", \"DF\", \"FS_POS\", \"FS_NEG\", \"FA\", \"NC\", \"ND\", \"CP_DATE\", \"CB_DATE\", \"CA_DATE\", \"AB_POS_DATE\", \"AB_NEG_DATE\", \"DF_DATE\", \"FA_DATE\", \"FS_POS_DATE\", \"FS_NEG_DATE\", \"NC_DATE\", \"ND_DATE\", \"SHIPMENT_ID\", \"CP_USD\", \"CB_USD\", \"CA_USD\", \"AB_POS_USD\", \"AB_NEG_USD\", \"DF_USD\", \"FS_POS_USD\", \"FS_NEG_USD\", \"FA_USD\", \"NC_USD\", \"ND_USD\"}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Renamed Columns\",{\"BELNR\", \"AWREF\", \"CP\", \"CB\", \"CA\", \"AB_POS\", \"AB_NEG\", \"DF\", \"FS_POS\", \"FS_NEG\", \"FA\", \"NC\", \"ND\", \"CP_DATE\", \"CB_DATE\", \"CA_DATE\", \"AB_POS_DATE\", \"AB_NEG_DATE\", \"DF_DATE\", \"FA_DATE\", \"FS_POS_DATE\", \"FS_NEG_DATE\", \"NC_DATE\", \"ND_DATE\", \"SHIPMENT_ID\", \"CP_USD\", \"CB_USD\", \"CA_USD\", \"AB_POS_USD\", \"AB_NEG_USD\", \"DF_USD\", \"FS_POS_USD\", \"FS_NEG_USD\", \"FA_USD\", \"NC_USD\", \"ND_USD\", \"CP_DOC_DATE\", \"CB_DOC_DATE\", \"CA_DOC_DATE\", \"AB_POS_DOC_DATE\", \"AB_NEG_DOC_DATE\", \"DF_DOC_DATE\", \"FA_DOC_DATE\", \"FS_POS_DOC_DATE\", \"FS_NEG_DOC_DATE\", \"NC_DOC_DATE\", \"ND_DOC_DATE\"}),",
                 "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Removed Columns\",{{\"F_CONTABLE\", \"intransit_date\"}})",
                 "in",
                 "    #\"Renamed Columns1\""
