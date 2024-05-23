@@ -241,6 +241,45 @@
             "width": 234
           },
           "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 1790.0041407805,
+            "y": 441.56323541148856
+          },
+          "nodeIndex": "CostoMes (2)",
+          "nodeLineageTag": "20d58ce2-58b6-4dfe-8f18-c3426ae6995f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2074.0041407805,
+            "y": 441.56323541148856
+          },
+          "nodeIndex": "History_NoLoad",
+          "nodeLineageTag": "f76c8462-00ba-400f-946e-c6710d892554",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2358.0041407805,
+            "y": 441.56323541148856
+          },
+          "nodeIndex": "History_Table_Costo (2)",
+          "nodeLineageTag": "a1e82fde-968e-4b0f-a2bc-ca60f80ca7fe",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",
