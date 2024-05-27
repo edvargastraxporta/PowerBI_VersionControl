@@ -4430,7 +4430,7 @@
             ],
             "dataType": "double",
             "expression": [
-              "VAR fact_1 = LOOKUPVALUE(IngresoMes[CA],IngresoMes[shipment_id],Scorecard[ShipmentID])",
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[CA],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
               "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
               "            RETURN",
               "            fact_2"
@@ -4576,7 +4576,7 @@
             ],
             "dataType": "dateTime",
             "expression": [
-              "VAR fact_1 = LOOKUPVALUE(IngresoMes[CA_DATE],IngresoMes[shipment_id],Scorecard[ShipmentID])",
+              "VAR fact_1 = LOOKUPVALUE(IngresoMes[CA_DATE],IngresoMes[REFERENCE_ID],Scorecard[ShipmentID])",
               "            VAR fact_2 = fact_1/Scorecard[count_shipment]",
               "            RETURN",
               "            fact_1"
@@ -5915,6 +5915,24 @@
             "formatString": "0",
             "isDataTypeInferred": true,
             "lineageTag": "4e4d6bd9-c667-40d4-98b8-a3ac61ff9e4b",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          },
+          {
+            "name": "Column",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c",
+                "value": "True"
+              }
+            ],
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "lineageTag": "eb1a8bd2-404f-4c97-99d3-a2a961a96e10",
             "summarizeBy": "sum",
             "type": "calculated"
           }
