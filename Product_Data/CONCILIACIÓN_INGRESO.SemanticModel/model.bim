@@ -1472,10 +1472,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -2120,10 +2116,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -5240,20 +5232,28 @@
               "               VAR previous_df_date = LOOKUPVALUE('PreviousIngresoMes'[DF_DATE],'PreviousIngresoMes'[SHIPMENT_ID],Scorecard[ShipmentID])",
               "               VAR previous_cp_date = LOOKUPVALUE('PreviousIngresoMes'[CP_DATE],'PreviousIngresoMes'[SHIPMENT_ID],Scorecard[ShipmentID])",
               "               VAR previous_cb_date = LOOKUPVALUE('PreviousIngresoMes'[CB_DATE],'PreviousIngresoMes'[SHIPMENT_ID],Scorecard[ShipmentID])",
+              "               VAR previous_ab_pos_date = LOOKUPVALUE('PreviousIngresoMes'[ab_pos_DATE],'PreviousIngresoMes'[SHIPMENT_ID],Scorecard[ShipmentID])",
+              "               VAR previous_ab_neg_date = LOOKUPVALUE('PreviousIngresoMes'[ab_neg_DATE],'PreviousIngresoMes'[SHIPMENT_ID],Scorecard[ShipmentID])",
               "               VAR previous_fa = (LOOKUPVALUE('PreviousIngresoMes'[fa],'PreviousIngresoMes'[SHIPMENT_ID],Scorecard[ShipmentID]))/Scorecard[count_shipment]",
               "               VAR previous_df = (LOOKUPVALUE('PreviousIngresoMes'[df],'PreviousIngresoMes'[SHIPMENT_ID],Scorecard[ShipmentID]))/Scorecard[count_shipment]",
               "               VAR previous_cp = (LOOKUPVALUE('PreviousIngresoMes'[CP],'PreviousIngresoMes'[SHIPMENT_ID],Scorecard[ShipmentID]))/Scorecard[count_shipment]",
               "               VAR previous_cb = (LOOKUPVALUE('PreviousIngresoMes'[CB],'PreviousIngresoMes'[SHIPMENT_ID],Scorecard[ShipmentID]))/Scorecard[count_shipment]",
+              "               VAR previous_ab_pos = (LOOKUPVALUE('PreviousIngresoMes'[ab_pos],'PreviousIngresoMes'[SHIPMENT_ID],Scorecard[ShipmentID]))/Scorecard[count_shipment]",
+              "               VAR previous_ab_neg = (LOOKUPVALUE('PreviousIngresoMes'[ab_neg],'PreviousIngresoMes'[SHIPMENT_ID],Scorecard[ShipmentID]))/Scorecard[count_shipment]",
               "               // month and year for documets",
               "               VAR my_fc = MONTH(Scorecard[fecha_contable])&\"_\"&YEAR(Scorecard[fecha_contable])",
               "               VAR my_df = MONTH(Scorecard[df_DATE])&\"_\"&YEAR(Scorecard[df_DATE])",
               "               VAR my_fa = MONTH(Scorecard[fa_DATE])&\"_\"&YEAR(Scorecard[fa_DATE])",
               "               VAR my_cp = MONTH(Scorecard[CP_DATE])&\"_\"&YEAR(Scorecard[CP_DATE])",
               "               VAR my_cb = MONTH(Scorecard[cb_date])&\"_\"&YEAR(Scorecard[cb_date])",
+              "               VAR my_ab_pos = MONTH(Scorecard[ab_pos_date])&\"_\"&YEAR(Scorecard[ab_pos_date])",
+              "               VAR my_ab_neg = MONTH(Scorecard[ab_neg_date])&\"_\"&YEAR(Scorecard[ab_neg_date])",
               "               VAR my_pcp = MONTH(previous_cp_date)&\"_\"&YEAR(previous_cp_date)",
               "               VAR my_pdf = MONTH(previous_df_date)&\"_\"&YEAR(previous_df_date)",
               "               VAR my_pfa = MONTH(previous_fa_date)&\"_\"&YEAR(previous_fa_date)",
               "               VAR my_pcb = MONTH(previous_cb_date)&\"_\"&YEAR(previous_cb_date)",
+              "               VAR my_pab_pos = MONTH(previous_ab_pos_date)&\"_\"&YEAR(previous_ab_pos_date)",
+              "               VAR my_pab_neg = MONTH(previous_ab_neg_date)&\"_\"&YEAR(previous_ab_neg_date)",
               "               // cp's ammount",
               "               VAR fm_cp_1 = IF(my_cp<>my_fc,Scorecard[CP],BLANK())",
               "               VAR fm_cp_2 = IF(my_pcp<>my_fc,previous_cp,BLANK())",
@@ -5265,6 +5265,16 @@
               "               VAR fm_cb_2 = IF(my_pcb<>my_fc,previous_cb,BLANK())",
               "            //    VAR fm_cb_3 = fm_cb_2+fm_cb_1",
               "               VAR fm_cb_3 = IF(my_cb=my_pcb,fm_cb_1,fm_cb_2+fm_cb_1)",
+              "               // ab_pos's ammount",
+              "               VAR fm_ab_pos_1 = IF(my_ab_pos<>my_fc,Scorecard[ab_pos],BLANK())",
+              "               VAR fm_ab_pos_2 = IF(my_pab_pos<>my_fc,previous_ab_pos,BLANK())",
+              "            //    VAR fm_ab_pos_3 = fm_ab_pos_2+fm_ab_pos_1",
+              "               VAR fm_ab_pos_3 = IF(my_ab_pos=my_pab_pos,fm_ab_pos_1,fm_ab_pos_2+fm_ab_pos_1) *-1",
+              "               // ab_neg's ammount",
+              "               VAR fm_ab_neg_1 = IF(my_ab_neg<>my_fc,Scorecard[ab_neg],BLANK())",
+              "               VAR fm_ab_neg_2 = IF(my_pab_neg<>my_fc,previous_ab_neg,BLANK())",
+              "            //    VAR fm_ab_neg_3 = fm_ab_neg_2+fm_ab_neg_1",
+              "               VAR fm_ab_neg_3 = IF(my_ab_neg=my_pab_neg,fm_ab_neg_1,fm_ab_neg_2+fm_ab_neg_1) *-1",
               "               // df's ammount",
               "               VAR fm_df_1 = IF(my_df<>my_fc,Scorecard[DF],BLANK())",
               "               VAR fm_df_2 = IF(my_pdf<>my_fc,previous_df,BLANK())",
@@ -5277,7 +5287,8 @@
               "            //    VAR fm_fa_3 = IF(Scorecard[FA]=previous_fa,fm_fa_1,fm_fa_2+fm_fa_1)",
               "               VAR fm_fa_3 = IF(my_fa=my_pfa,fm_fa_1,fm_fa_2+fm_fa_1)",
               "               RETURN",
-              "            fm_cp_3+fm_cb_3+fm_df_3+fm_fa_3",
+              "            fm_cp_3+fm_cb_3+fm_ab_pos_3+fm_ab_neg_3+fm_df_3+fm_fa_3",
+              "            ",
               "            ",
               "            ",
               "            ",
@@ -5638,7 +5649,12 @@
               }
             ],
             "dataType": "dateTime",
-            "expression": "IF(ISBLANK(Scorecard[fecha_contable]),Scorecard[Intransit_shipment],Scorecard[fecha_contable])",
+            "expression": [
+              "VAR first_fc = IF(ISBLANK(Scorecard[fecha_contable]),Scorecard[Intransit_shipment],Scorecard[fecha_contable])",
+              "                   VAR sec_fc = IF(first_fc<Scorecard[Intransit_shipment],Scorecard[Intransit_shipment],first_fc)",
+              "                   RETURN",
+              "                   sec_fc"
+            ],
             "formatString": "Short Date",
             "isDataTypeInferred": true,
             "lineageTag": "845f421c-d008-444c-9fdb-b439f328cd54",
@@ -15659,10 +15675,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Exception"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -24352,10 +24364,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -25053,10 +25061,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Exception"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -36502,10 +36506,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
