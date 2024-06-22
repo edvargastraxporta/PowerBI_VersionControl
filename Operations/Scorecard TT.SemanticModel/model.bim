@@ -4,7 +4,7 @@
     "annotations": [
       {
         "name": "PBIDesktopVersion",
-        "value": "2.128.1380.0 (24.04)"
+        "value": "2.130.930.0 (24.06)"
       },
       {
         "name": "PBI_QueryOrder",
@@ -27399,17 +27399,13 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
               }
             ],
             "dataType": "double",
-            "expression": "LOOKUPVALUE('Tipo de cambio_Completo'[ExchangeRateDOF],'Tipo de cambio_Completo'[Fecha],Scorecard[ActualNew])",
+            "expression": "LOOKUPVALUE('All_dates'[ExchangeRateDOF],'All_dates'[Fecha],Scorecard[ActualNew])",
             "isDataTypeInferred": true,
             "lineageTag": "daf48ab9-702b-465c-8c14-59fc5a7c8d02",
-            "summarizeBy": "sum",
+            "summarizeBy": "none",
             "type": "calculated"
           },
           {
@@ -28539,9 +28535,10 @@
               "expression": [
                 "let",
                 "    Origen = Scorecard,",
-                "    #\"Filas agrupadas\" = Table.Group(Origen, {\"LoadID\"}, {{\"Max Driver Check-out\", each List.Max([ActualPickupDepartureDateTimeDriverCheckout]), type nullable date}, {\"Min Driver Check-out\", each List.Min([ActualPickupDepartureDateTimeDriverCheckout]), type nullable date}})",
+                "    #\"Filas agrupadas\" = Table.Group(Origen, {\"LoadID\"}, {{\"Max Driver Check-out\", each List.Max([ActualPickupDepartureDateTimeDriverCheckout]), type nullable date}, {\"Min Driver Check-out\", each List.Min([ActualPickupDepartureDateTimeDriverCheckout]), type nullable date}}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Filas agrupadas\", each ([#\"Min Driver Check-out\"] <> null))",
                 "in",
-                "    #\"Filas agrupadas\""
+                "    #\"Filtered Rows\""
               ],
               "type": "m"
             }
@@ -44885,7 +44882,7 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Table"
+            "value": "Exception"
           }
         ],
         "columns": [
@@ -46126,12 +46123,16 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
               }
             ],
-            "dataType": "string",
+            "dataType": "double",
             "lineageTag": "ef4deab4-da78-4556-ad69-081541ce58b8",
             "sourceColumn": "ExchangeRateDOF",
-            "summarizeBy": "none"
+            "summarizeBy": "sum"
           }
         ],
         "lineageTag": "e05db924-9311-444a-a677-622fe2ddedae",
@@ -46159,9 +46160,10 @@
                 "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Filled Down1\",{{\"Custom\", \"ExchangeRateDOF\"}, {\"Tipo de cambio Diario.tipo_de_cambio\", \"ExchangeRateBanxico\"}}),",
                 "    #\"Removed Columns\" = Table.RemoveColumns(#\"Renamed Columns1\",{\"DiasFestivos.Custom\"}),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Removed Columns\",{{\"Fecha\", type date}}),",
-                "    #\"Filtered Rows1\" = Table.SelectRows(#\"Changed Type\", each [Fecha] >= #date(2019, 12, 31) and [Fecha] <= now_date )",
+                "    #\"Filtered Rows1\" = Table.SelectRows(#\"Changed Type\", each [Fecha] >= #date(2019, 12, 31) and [Fecha] <= now_date ),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Filtered Rows1\",{{\"ExchangeRateDOF\", type number}})",
                 "in",
-                "    #\"Filtered Rows1\""
+                "    #\"Changed Type1\""
               ],
               "type": "m"
             }
@@ -47411,6 +47413,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -47450,14 +47456,13 @@
             "source": {
               "expression": [
                 "let",
-                "    Source = SharePoint.Files(\"https://ftmexico.sharepoint.com/sites/TRAXIONInnovacion\", [ApiVersion = 15]),",
-                "    #\"Filtered Rows\" = Table.SelectRows(Source, each ([Folder Path] = \"https://ftmexico.sharepoint.com/sites/TRAXIONInnovacion/Shared Documents/Traxion Control Tower/PowerBI/BIs/Catálogos/\")),",
-                "    #\"CATALOGO CLIENTES X SUCURSAL 2024 J xlsx_https://ftmexico sharepoint com/sites/TRAXIONInnovacion/Shared Documents/Traxion Control Tower/PowerBI/BIs/Catálogos/\" = #\"Filtered Rows\"{[Name=\"CATALOGO CLIENTES X SUCURSAL 2024 J.xlsx\",#\"Folder Path\"=\"https://ftmexico.sharepoint.com/sites/TRAXIONInnovacion/Shared Documents/Traxion Control Tower/PowerBI/BIs/Catálogos/\"]}[Content],",
+                "    Source = SharePoint.Files(\"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics\", [ApiVersion = 15]),",
+                "    #\"Filtered Rows\" = Table.SelectRows(Source, each ([Folder Path] = \"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics/Documentos compartidos/Branch_XB_Catalog/\")),",
+                "    #\"CATALOGO CLIENTES X SUCURSAL 2024 J xlsx_https://ftmexico sharepoint com/sites/TRAXIONInnovacion/Shared Documents/Traxion Control Tower/PowerBI/BIs/Catálogos/\" = #\"Filtered Rows\"{[Name=\"CATALOGO CLIENTES X SUCURSAL 2024.xlsx\",#\"Folder Path\"=\"https://ftmexico.sharepoint.com/sites/TXPDataAnalytics/Documentos compartidos/Branch_XB_Catalog/\"]}[Content],",
                 "    #\"Imported Excel Workbook\" = Excel.Workbook(#\"CATALOGO CLIENTES X SUCURSAL 2024 J xlsx_https://ftmexico sharepoint com/sites/TRAXIONInnovacion/Shared Documents/Traxion Control Tower/PowerBI/BIs/Catálogos/\"),",
                 "    CAT_Sheet = #\"Imported Excel Workbook\"{[Item=\"CAT\",Kind=\"Sheet\"]}[Data],",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(CAT_Sheet, [PromoteAllScalars=true]),",
-                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Promoted Headers\",{\"Operador \"}),",
-                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Removed Columns\",{{\"Scorecard[ProjectName]\", \"ProjectName\"}})",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Promoted Headers\",{{\"Scorecard[ProjectName]\", \"ProjectName\"}})",
                 "in",
                 "    #\"Renamed Columns\""
               ],
