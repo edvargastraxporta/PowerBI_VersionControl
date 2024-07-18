@@ -5,13 +5,13 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 0,
-        "y": 0
+        "y": 11.25
       },
       "nodes": [
         {
           "location": {
             "x": 0,
-            "y": 0
+            "y": 11.25
           },
           "nodeIndex": "Measures (2)",
           "nodeLineageTag": "6f10dc22-b308-4ae7-9304-768c69a510a7",
@@ -19,12 +19,12 @@
             "height": 124,
             "width": 260.00201686695272
           },
-          "zIndex": 10
+          "zIndex": 11
         },
         {
           "location": {
             "x": 1463.3493749057498,
-            "y": 410.7631362920053
+            "y": 422.0131362920053
           },
           "nodeIndex": "Scorecard",
           "nodeLineageTag": "67ad6e1f-86aa-4faa-8f95-f79a66a107ae",
@@ -32,12 +32,12 @@
             "height": 491.50041522443053,
             "width": 234
           },
-          "zIndex": 11
+          "zIndex": 20
         },
         {
           "location": {
             "x": 1463.3220483961377,
-            "y": 203.98764474864279
+            "y": 215.23764474864279
           },
           "nodeIndex": "Fecha",
           "nodeLineageTag": "48fc6ee9-ac2b-4d05-a498-6f0d2580abad",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 1458.4192272429887,
-            "y": 5.5718607572041527
+            "y": 16.821860757204153
           },
           "nodeIndex": "Calendario",
           "nodeLineageTag": "db9dc0e3-6221-4a8f-9a26-2eac6f63897a",
@@ -63,7 +63,7 @@
         {
           "location": {
             "x": 1064.395209226715,
-            "y": 437.9856713828031
+            "y": 449.2356713828031
           },
           "nodeIndex": "Event History (2)",
           "nodeLineageTag": "e2cc26af-cb2d-452d-bed8-8d903a3a1679",
@@ -71,12 +71,12 @@
             "height": 493.0714793214164,
             "width": 234
           },
-          "zIndex": 15
+          "zIndex": 14
         },
         {
           "location": {
             "x": 352.23157531917116,
-            "y": 118.57668596606095
+            "y": 129.82668596606095
           },
           "nodeIndex": "Events",
           "nodeLineageTag": "0da5ea4d-6938-46f2-9931-f9103874ffb0",
@@ -84,12 +84,12 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 19
+          "zIndex": 18
         },
         {
           "location": {
             "x": 350.37428840010324,
-            "y": 0
+            "y": 11.25
           },
           "nodeIndex": "Total Events",
           "nodeLineageTag": "1f659530-5835-46ae-8306-0910aa8478f1",
@@ -97,12 +97,12 @@
             "height": 104,
             "width": 234
           },
-          "zIndex": 16
+          "zIndex": 15
         },
         {
           "location": {
             "x": 0,
-            "y": 355.98522636641746
+            "y": 367.23522636641746
           },
           "nodeIndex": "No considerar",
           "nodeLineageTag": "2759000a-f2d3-4d74-921d-48ae3f2a5d14",
@@ -110,12 +110,12 @@
             "height": 124,
             "width": 263.71659070508883
           },
-          "zIndex": 17
+          "zIndex": 16
         },
         {
           "location": {
-            "x": 1498.7840578472019,
-            "y": 1045.96865654868
+            "x": 1147.5928467457106,
+            "y": 1029.0570971678999
           },
           "nodeIndex": "Event History (4)",
           "nodeLineageTag": "844186b3-93c4-44d5-936b-9ec6167c0f55",
@@ -123,12 +123,12 @@
             "height": 364.60593034414228,
             "width": 234
           },
-          "zIndex": 18
+          "zIndex": 17
         },
         {
           "location": {
             "x": 0,
-            "y": 143.28181586659639
+            "y": 154.53181586659639
           },
           "nodeIndex": "Table",
           "nodeLineageTag": "e5cf8c0c-3a2d-46e6-acff-ce0227206846",
@@ -136,12 +136,12 @@
             "height": 200,
             "width": 261.85930378602075
           },
-          "zIndex": 5
+          "zIndex": 6
         },
         {
           "location": {
             "x": 1830.5910198773968,
-            "y": 457.21119935854495
+            "y": 468.46119935854495
           },
           "nodeIndex": "Matrix_Metabase",
           "nodeLineageTag": "ba307d5c-a25a-455b-9544-ecb1494ca2e9",
@@ -149,12 +149,12 @@
             "height": 384.48467814233982,
             "width": 226.11630024065721
           },
-          "zIndex": 6
+          "zIndex": 7
         },
         {
           "location": {
             "x": 655.92343884981074,
-            "y": 98.436206710606726
+            "y": 109.68620671060673
           },
           "nodeIndex": "metabase_load_view",
           "nodeLineageTag": "683f4d7d-52d1-4a1f-930a-6616f1109c2d",
@@ -162,12 +162,12 @@
             "height": 300,
             "width": 297.14775524831384
           },
-          "zIndex": 7
+          "zIndex": 8
         },
         {
           "location": {
             "x": 653.18768790867091,
-            "y": 193.15783958307736
+            "y": 204.40783958307736
           },
           "nodeIndex": "metabase_load_documents",
           "nodeLineageTag": "337c2ae2-4d9f-4ec3-ac3c-56772dd3d932",
@@ -175,12 +175,12 @@
             "height": 270.28340929491128,
             "width": 299.00504216738193
           },
-          "zIndex": 8
+          "zIndex": 9
         },
         {
           "location": {
             "x": 648.19313475475,
-            "y": 306.32580504978239
+            "y": 317.57580504978239
           },
           "nodeIndex": "metabase_load_events",
           "nodeLineageTag": "531de8f1-d70c-4ba5-ac13-43d36f9e751c",
@@ -188,12 +188,12 @@
             "height": 300,
             "width": 306.43418984365405
           },
-          "zIndex": 9
+          "zIndex": 10
         },
         {
           "location": {
             "x": 661.60794229055182,
-            "y": 18.222185481681208
+            "y": 29.472185481681208
           },
           "nodeIndex": "metabase_load_delivereddate",
           "nodeLineageTag": "d1b9feca-1f92-4683-bb76-51a8d27a62ef",
@@ -201,12 +201,12 @@
             "height": 300,
             "width": 288.6665564450434
           },
-          "zIndex": 1
+          "zIndex": 2
         },
         {
           "location": {
             "x": 652.211724581917,
-            "y": 622.86743101019181
+            "y": 634.11743101019181
           },
           "nodeIndex": "matrix_metabase (2)",
           "nodeLineageTag": "c745159b-8ed8-4fc0-8eca-b0c22765c912",
@@ -214,12 +214,12 @@
             "height": 300,
             "width": 303.57561729369172
           },
-          "zIndex": 2
+          "zIndex": 3
         },
         {
           "location": {
             "x": 651.133047034637,
-            "y": 932.503343739915
+            "y": 943.753343739915
           },
           "nodeIndex": "TXP_PULSE",
           "nodeLineageTag": "6af1e3e3-c119-4825-8a04-ef151ddd0182",
@@ -227,12 +227,12 @@
             "height": 145,
             "width": 303.57561729369161
           },
-          "zIndex": 3
+          "zIndex": 4
         },
         {
           "location": {
             "x": 351.873139875825,
-            "y": 258.28248091771258
+            "y": 269.53248091771258
           },
           "nodeIndex": "CuentaxGerente",
           "nodeLineageTag": "384542a8-6032-4455-8c69-9636e44e97bd",
@@ -240,7 +240,59 @@
             "height": 128,
             "width": 234
           },
-          "zIndex": 4
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 2008.1020384650831,
+            "y": 1024.7991247773302
+          },
+          "nodeIndex": "CuentaxPlaneador",
+          "nodeLineageTag": "665de4a1-628b-439e-beba-c7af195e405d",
+          "size": {
+            "height": 271.27248678918568,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1636.3042483282782,
+            "y": 1025.6072523460998
+          },
+          "nodeIndex": "Unique_Project",
+          "nodeLineageTag": "b58e13ba-0b7b-4eef-b2eb-5f86227c2fe0",
+          "size": {
+            "height": 277.93904323422908,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 2576.1020384650828,
+            "y": 570.95651375602108
+          },
+          "nodeIndex": "Logos",
+          "nodeLineageTag": "5db33572-35a6-4019-83d1-38fd5b6c5249",
+          "size": {
+            "height": 423.59560555074563,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1635.9024865594131,
+            "y": 1364.4498507288417
+          },
+          "nodeIndex": "Logos (2)",
+          "nodeLineageTag": "909c7619-7b12-4018-8480-169d1ad53273",
+          "size": {
+            "height": 282.78780864684575,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",
